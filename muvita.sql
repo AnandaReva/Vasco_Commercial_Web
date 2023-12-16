@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 09:14 AM
+-- Generation Time: Dec 16, 2023 at 03:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,6 +33,18 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VALUES
+(1, 'Shirts', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
+(2, 'Denims', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(3, 'T-Shirts', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(4, 'Pants', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(5, 'Sweaters', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(6, 'Outwears', '2023-08-27 13:36:16', '2023-08-27 13:36:16');
 
 -- --------------------------------------------------------
 
@@ -214,7 +226,7 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
-  `pruduct_name` varchar(255) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
   `stock` bigint(20) UNSIGNED NOT NULL,
   `color` varchar(255) NOT NULL,
   `price` double(8,2) NOT NULL,
@@ -223,6 +235,36 @@ CREATE TABLE `products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `category_id`, `product_name`, `stock`, `color`, `price`, `description`, `size`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Raven Shirt 1', 50, 'Black', 150000.00, 'Comfortable shirt with a Raven design', 'M', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
+(2, 2, 'Black Denim 1', 30, 'Black', 200000.00, 'High-quality black denim', 'L', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
+(3, 3, 'Crow T-Shirt 1', 40, 'Black', 100000.00, 'Casual T-shirt with Crow print', 'S', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
+(4, 4, 'Black Pants 1', 20, 'Black', 180000.00, 'Stylish black pants', 'XL', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
+(5, 5, 'Dark Raven Sweater 1', 25, 'Black', 120000.00, 'Warm sweater with Dark Raven design', 'L', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
+(6, 6, 'Black Outwear 1', 15, 'Black', 250000.00, 'Fashionable black outwear', 'M', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
+(7, 1, 'Raven Shirt 2', 50, 'Black', 150000.00, 'Comfortable shirt with a Raven design', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(8, 2, 'Black Denim 2', 30, 'Black', 200000.00, 'High-quality black denim', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(9, 3, 'Crow T-Shirt 2', 40, 'Black', 100000.00, 'Casual T-shirt with Crow print', 'S', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(10, 4, 'Black Pants 2', 20, 'Black', 180000.00, 'Stylish black pants', 'XL', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(11, 5, 'Dark Raven Sweater 2', 25, 'Black', 120000.00, 'Warm sweater with Dark Raven design', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(12, 6, 'Black Outwear 2', 15, 'Black', 250000.00, 'Fashionable black outwear', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(13, 1, 'Raven Shirt 3', 50, 'Black', 150000.00, 'Comfortable shirt with a Raven design', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(14, 2, 'Black Denim 3', 30, 'Black', 200000.00, 'High-quality black denim', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(15, 3, 'Crow T-Shirt 3', 40, 'Black', 100000.00, 'Casual T-shirt with Crow print', 'S', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(16, 4, 'Black Pants 3', 20, 'Black', 180000.00, 'Stylish black pants', 'XL', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(17, 5, 'Dark Raven Sweater 3', 25, 'Black', 120000.00, 'Warm sweater with Dark Raven design', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(18, 6, 'Black Outwear 3', 15, 'Black', 250000.00, 'Fashionable black outwear', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(19, 1, 'Raven Shirt 4', 50, 'Black', 150000.00, 'Comfortable shirt with a Raven design', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(20, 2, 'Black Denim 4', 30, 'Black', 200000.00, 'High-quality black denim', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(21, 3, 'Crow T-Shirt 4', 40, 'Black', 100000.00, 'Casual T-shirt with Crow print', 'S', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(22, 4, 'Black Pants 4', 20, 'Black', 180000.00, 'Stylish black pants', 'XL', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(23, 5, 'Dark Raven Sweater 4', 25, 'Black', 120000.00, 'Warm sweater with Dark Raven design', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
+(24, 6, 'Black Outwear 4', 15, 'Black', 250000.00, 'Fashionable black outwear', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55');
 
 -- --------------------------------------------------------
 
@@ -358,7 +400,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -412,7 +454,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `product_files`

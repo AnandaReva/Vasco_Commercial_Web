@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/vasco.com/home', function () {
+    return view('loginView');
 });
+
+Route::get('/vasco.com', [CustomerController::class, 'landing']);
+
+Route::get('/vasco.com/category/{idCategory}', [CustomerController::class, 'showCategoryProducts'])->name('category.show');
+
+Route::get('/vasco.com/product/{idProduct}', [CustomerController::class, 'showProduct'])->name('product.show');
+
+
+
+

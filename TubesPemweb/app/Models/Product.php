@@ -9,16 +9,15 @@ use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 
 class Product extends Model
 {
-    use HasFactory, AuthenticatableTrait;
+    use HasFactory;
 
-    protected $table = 'products';
+    protected $table = 'products'; 
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'integer';
     protected $fillable = [
-
         'category_id',
-        'pruduct_name',
+        'product_name',
         'stock',
         'color',
         'price',
@@ -28,11 +27,11 @@ class Product extends Model
 
     public function productCategories()
     {
-        return $this->hasMany(Category::class,  'id', 'category_id');
+        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
     }
 
     public function productOrderDetails()
     {
-        return $this->belongsToMany(Order_details::class,  'id', 'product_id');
+        return $this->belongsToMany(Order_details::class, 'order_details', 'product_id', 'id');
     }
 }

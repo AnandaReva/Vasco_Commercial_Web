@@ -14,17 +14,19 @@ class productSeeder extends Seeder
      */
     public function run()
     {
-        // Create a Faker instance
         $faker = Faker::create();
 
-        // Generate 10 fake products
-        for ($i = 0; $i < 10; $i++) {
+        foreach (range(1, 30) as $index) {
+            $categoryId = rand(1, 6);
+
             Product::create([
-                'name' => $faker->productName,
+                'category_id' => $categoryId,
+                'product_name' => ucfirst($faker->word),
+                'stock' => $faker->randomNumber(2),
+                'color' => $faker->colorName,
+                'price' => $faker->numberBetween(110000, 2000000),
                 'description' => $faker->sentence,
-                'price' => $faker->numberBetween(30000, 2000000),
-                'stock' => $faker->numberBetween(0, 100),
-                
+                'size' => $faker->randomElement(['S', 'M', 'L', 'XL']),
             ]);
         }
     }

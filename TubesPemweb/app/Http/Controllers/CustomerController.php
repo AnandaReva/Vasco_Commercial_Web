@@ -14,27 +14,37 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     public function landing()
-    {
-        $products = Product::join('categories', 'products.category_id', '=', 'categories.id')
+    {       /*  $products = Product::join('categories', 'products.category_id', '=', 'categories.id')
             ->select('products.*', 'categories.category_name')
             ->get();
-
         $categories = Category::all();
        // dd($products);
-
-
-        return view('landingView', compact( 'products'));
+        return view('landingView', compact( 'products')); */
+        $categories = Category::with('categoryProducts')->get();
+        return view('landingView', compact('categories'));
     }
 
 
 
-    public function home($id)
+    public function showCategoryProducts($idCategory)
     {
-        $category = Category::find($id);
-        $products = $category->products;
-        dd($products);
-        return view('products.show', compact('products'));
+        // Retrieve category products based on $idCategory
+        $categoryProducts = Category::find($idCategory)->categoryProducts;
+        
+        return view('categoryProducts', compact('categoryProducts'));
     }
+
+
+    public function showProduct($idProduct)
+    {
+       
+        // Retrieve category products based on $idCategory
+        $product = Product::find($idProduct);
+    
+        return view('productDetail', compact('product'));
+    }
+    
+
 
     public function addToCart($id)
     {
