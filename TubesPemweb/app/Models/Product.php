@@ -18,9 +18,6 @@ class Product extends Model
     protected $fillable = [
         'category_id',
         'product_name',
-        'stock',
-        'color',
-        'price',
         'description',
         'size',
     ];
@@ -33,5 +30,9 @@ class Product extends Model
     public function productOrderDetails()
     {
         return $this->belongsToMany(Order_details::class, 'order_details', 'product_id', 'id');
+    }
+    public function variants()
+    {
+        return $this->hasMany(ProductVariant::class, 'product_id', 'id');
     }
 }
