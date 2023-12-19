@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 
 
@@ -22,11 +23,22 @@ Route::get('/vasco.com/home', function () {
     return view('loginView');
 });
 
+Route::get('/vasco.com/login', [AuthController::class, 'login'])->name('login');
+Route::post('/vasco.com/login', [AuthController::class, 'authenticating']);
+Route::get('/vasco.com/logout', [AuthController::class, 'logout']);
+
+
+
+
+
+
 Route::get('/vasco.com', [CustomerController::class, 'landing']);
 
 Route::get('/vasco.com/category/{idCategory}', [CustomerController::class, 'showCategoryProducts'])->name('category.show');
 
 Route::get('/vasco.com/product/{idProduct}', [CustomerController::class, 'showProduct'])->name('product.show');
+
+Route::post('/vasco.com/product/{idProduct}/order', [CustomerController::class, 'order'])->name('product.order');
 
 
 

@@ -56,11 +56,49 @@ class CustomerController extends Controller
             ->get();
 
 
+        // Inisialisasi array untuk hasil transformasi
+        $transformedData = [];
+
+        // Iterasi melalui setiap product variant
+        foreach ($productVariants as $productVariant) {
+            $transformedData[] = [
+                'product_variants' => [
+                    'available_size' => $productVariant->availableSizes->pluck('size'),
+                ],
+            ];
+        }
+
+
+
+        // Hasil transformasi
+        //dd($transformedData);
 
         //dd($productVariants);
         // dd($product);
 
         return view('productDetail', compact('productVariants', 'product'));
+    }
+
+    public function order(Request $request, $idProduct)
+    {
+        $request->validate([
+            'selected_color' => 'required',
+            'size_name' => 'required',
+            'qty' => 'required|numeric|min:1',
+        ]);
+
+        // Get the selected values from the form
+        $selectedColor = $request->input('selected_color');
+        $selectedSize = $request->input('size_name');
+        $qty = $request->input('qty');
+        $price = $request->input('price');
+        $stock = $request->input('stock');
+        $totalPrice = $price * $qty;
+
+        dd($selectedColor, $selectedSize, $qty, $price, $totalPrice, $stock);
+
+
+        //  return view('order', compact('productVariants', 'product'));
     }
 
 
