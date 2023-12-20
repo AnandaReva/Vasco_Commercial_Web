@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 03:10 PM
+-- Generation Time: Dec 20, 2023 at 03:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,40 @@ SET time_zone = "+00:00";
 --
 -- Database: `muvita`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `available_sizes`
+--
+
+CREATE TABLE `available_sizes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_variant_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `size_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `price` double(8,2) NOT NULL,
+  `stock` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `available_sizes`
+--
+
+INSERT INTO `available_sizes` (`id`, `product_variant_id`, `size_id`, `price`, `stock`) VALUES
+(7, 1, 1, 257000.00, 318),
+(8, 1, 2, 255000.00, 337),
+(9, 1, 3, 250000.00, 42),
+(10, 1, 4, 250000.00, 205),
+(11, 2, 2, 300000.00, 214),
+(12, 2, 3, 290000.00, 108),
+(13, 4, 1, 375000.00, 226),
+(14, 4, 2, 360000.00, 122),
+(15, 4, 3, 360000.00, 258),
+(16, 4, 4, 350000.00, 239),
+(17, 5, 1, 375000.00, 76),
+(18, 5, 2, 360000.00, 328),
+(19, 5, 3, 360000.00, 49),
+(20, 5, 4, 350000.00, 268);
 
 -- --------------------------------------------------------
 
@@ -45,6 +79,33 @@ INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VAL
 (4, 'Pants', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
 (5, 'Sweaters', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
 (6, 'Outwears', '2023-08-27 13:36:16', '2023-08-27 13:36:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `colors`
+--
+
+CREATE TABLE `colors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `color_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `colors`
+--
+
+INSERT INTO `colors` (`id`, `color_name`) VALUES
+(1, 'Red'),
+(2, 'Blue'),
+(3, 'Green'),
+(4, 'Yellow'),
+(5, 'Black'),
+(6, 'White'),
+(7, 'purple'),
+(8, 'Grey'),
+(9, 'Magenta'),
+(10, 'Brown');
 
 -- --------------------------------------------------------
 
@@ -227,11 +288,7 @@ CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `product_name` varchar(255) NOT NULL,
-  `stock` bigint(20) UNSIGNED NOT NULL,
-  `color` varchar(255) NOT NULL,
-  `price` double(8,2) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `size` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -240,31 +297,25 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `category_id`, `product_name`, `stock`, `color`, `price`, `description`, `size`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Raven Shirt 1', 50, 'Black', 150000.00, 'Comfortable shirt with a Raven design', 'M', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
-(2, 2, 'Black Denim 1', 30, 'Black', 200000.00, 'High-quality black denim', 'L', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
-(3, 3, 'Crow T-Shirt 1', 40, 'Black', 100000.00, 'Casual T-shirt with Crow print', 'S', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
-(4, 4, 'Black Pants 1', 20, 'Black', 180000.00, 'Stylish black pants', 'XL', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
-(5, 5, 'Dark Raven Sweater 1', 25, 'Black', 120000.00, 'Warm sweater with Dark Raven design', 'L', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
-(6, 6, 'Black Outwear 1', 15, 'Black', 250000.00, 'Fashionable black outwear', 'M', '2023-12-11 06:30:09', '2023-12-11 06:30:09'),
-(7, 1, 'Raven Shirt 2', 50, 'Black', 150000.00, 'Comfortable shirt with a Raven design', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(8, 2, 'Black Denim 2', 30, 'Black', 200000.00, 'High-quality black denim', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(9, 3, 'Crow T-Shirt 2', 40, 'Black', 100000.00, 'Casual T-shirt with Crow print', 'S', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(10, 4, 'Black Pants 2', 20, 'Black', 180000.00, 'Stylish black pants', 'XL', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(11, 5, 'Dark Raven Sweater 2', 25, 'Black', 120000.00, 'Warm sweater with Dark Raven design', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(12, 6, 'Black Outwear 2', 15, 'Black', 250000.00, 'Fashionable black outwear', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(13, 1, 'Raven Shirt 3', 50, 'Black', 150000.00, 'Comfortable shirt with a Raven design', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(14, 2, 'Black Denim 3', 30, 'Black', 200000.00, 'High-quality black denim', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(15, 3, 'Crow T-Shirt 3', 40, 'Black', 100000.00, 'Casual T-shirt with Crow print', 'S', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(16, 4, 'Black Pants 3', 20, 'Black', 180000.00, 'Stylish black pants', 'XL', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(17, 5, 'Dark Raven Sweater 3', 25, 'Black', 120000.00, 'Warm sweater with Dark Raven design', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(18, 6, 'Black Outwear 3', 15, 'Black', 250000.00, 'Fashionable black outwear', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(19, 1, 'Raven Shirt 4', 50, 'Black', 150000.00, 'Comfortable shirt with a Raven design', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(20, 2, 'Black Denim 4', 30, 'Black', 200000.00, 'High-quality black denim', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(21, 3, 'Crow T-Shirt 4', 40, 'Black', 100000.00, 'Casual T-shirt with Crow print', 'S', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(22, 4, 'Black Pants 4', 20, 'Black', 180000.00, 'Stylish black pants', 'XL', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(23, 5, 'Dark Raven Sweater 4', 25, 'Black', 120000.00, 'Warm sweater with Dark Raven design', 'L', '2023-12-11 06:30:55', '2023-12-11 06:30:55'),
-(24, 6, 'Black Outwear 4', 15, 'Black', 250000.00, 'Fashionable black outwear', 'M', '2023-12-11 06:30:55', '2023-12-11 06:30:55');
+INSERT INTO `products` (`id`, `category_id`, `product_name`, `description`, `created_at`, `updated_at`) VALUES
+(25, 1, 'Classic Cotton Short', 'The Classic Cotton Tee is a timeless wardrobe essential that offers both comfort and style. Made from high-quality cotton fabric, this T-shirt is perfect for casual and everyday wear. Its classic design and breathable material make it versatile, allowing you to pair it with jeans for a laid-back look or dress it up with a blazer for a more polished ensemble.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
+(26, 1, 'Urban Comfort Shirt', 'The Urban Comfort Shirt is designed for the modern urban lifestyle, providing a perfect blend of style and comfort. With a contemporary fit and urban-inspired details, this shirt is suitable for various occasions. Whether you\'re navigating city streets or attending a casual gathering, the Urban Comfort Shirt ensures you look sharp while staying at ease.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(27, 1, 'Everyday Elegance Blouse', 'Elevate your everyday wardrobe with the Everyday Elegance Blouse. This sophisticated blouse combines timeless elegance with comfort, making it suitable for both work and social occasions. The subtle details, such as delicate embroidery or a flattering silhouette, add a touch of refinement to your daily style, allowing you to effortlessly transition from day to evening.', '2023-08-27 13:36:16', '2023-09-07 03:55:10'),
+(28, 1, 'Weekend Casual Polo', 'Embrace laid-back style with the Weekend Casual Polo. This polo shirt is crafted for comfort, making it an ideal choice for your weekend escapades and casual outings. The relaxed fit and breathable fabric ensure a cool and effortless look, whether you\'re spending time with friends, heading to a sports event, or simply enjoying a leisurely weekend afternoon.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(29, 1, 'SmartFit Dress Shirt', 'The SmartFit Dress Shirt is tailored for a sharp and polished appearance, making it the perfect choice for formal or business occasions. With a focus on precision fit and quality craftsmanship, this dress shirt exudes professionalism. Whether paired with a suit for the boardroom or worn with dress pants for a special event, the SmartFit Dress Shirt ensures a sophisticated and refined look.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(30, 2, 'Vintage Blue Denim Jeans', 'Denim jeans with a vintage-inspired wash and a classic fit. The distressed details add a touch of rugged charm, making them a versatile choice for casual outings.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
+(31, 2, 'SlimFit Black Denim Pants', 'Stylish black denim pants with a slim fit, perfect for a modern and edgy look. The stretch fabric ensures comfort, while the sleek design makes them suitable for both casual and semi-formal occasions.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(32, 2, 'High-Rise Distressed Denim Shorts', 'Trendy high-rise denim shorts featuring distressed accents for a laid-back and fashionable vibe. The shorts are designed for comfort and offer a relaxed yet chic style for warm-weather days.', NULL, NULL),
+(33, 3, 'Sunrise Graphic Tee', 'Embrace the warmth of the sunrise with this vibrant graphic tee. Made from soft cotton, it features a unique design that adds a pop of color to your casual wardrobe. Perfect for laid-back weekends or beach outings.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
+(34, 3, 'Minimalist Pocket Tee', 'Keep it simple and stylish with this minimalist pocket tee. The clean lines and comfortable fit make it a versatile choice for everyday wear. Pair it with jeans or shorts for an effortlessly cool look.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(35, 3, 'Adventure Awaits Tee', 'Fuel your wanderlust with the Adventure Awaits Tee. Crafted for comfort, it features a motivational slogan and a relaxed fit, making it an ideal companion for your explorations or leisurely days.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(36, 4, 'FlexFit Jogger Pants', 'Elevate your athleisure style with these FlexFit Jogger Pants. Designed for both comfort and flexibility, they feature a tapered fit and stretchy fabric, making them perfect for workouts or casual outings.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
+(37, 4, 'Tailored Chino Trousers', 'Step into sophistication with these tailored chino trousers. Versatile and polished, they offer a refined look suitable for both office settings and smart-casual events. Pair them with a button-down shirt for a classic ensemble.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(38, 4, 'Cargo Adventure Pants', 'Embrace the spirit of adventure with Cargo Adventure Pants. Featuring multiple pockets for utility and a durable yet breathable fabric, these pants are ready for outdoor exploration while maintaining a trendy urban style.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(39, 6, 'Quilted Puffer Jacket', 'Brave the cold in style with the Quilted Puffer Jacket. Featuring a sleek design and insulating fill, this jacket provides both warmth and a contemporary look for winter adventures.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
+(40, 6, 'Waterproof Shell Parka', 'Face the elements with confidence in the Waterproof Shell Parka. Designed for rainy days, it offers protection without sacrificing style. The adjustable hood and functional details make it a practical choice for unpredictable weather.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
+(41, 5, 'Cozy Knit Pullover:', 'Wrap yourself in warmth with this Cozy Knit Pullover. The soft and chunky knit provides comfort, while the relaxed fit and subtle details make it a stylish choice for chilly days.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
+(42, 5, 'Striped Crewneck Sweater', 'Add a touch of classic charm with the Striped Crewneck Sweater. The timeless striped pattern and lightweight knit make it a versatile option for layering. Perfect for a casual day at the office or a weekend brunch.', '2023-08-27 13:36:16', '2023-08-27 13:36:16');
 
 -- --------------------------------------------------------
 
@@ -274,12 +325,77 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `stock`, `color`, `
 
 CREATE TABLE `product_files` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `product_variant_id` bigint(20) UNSIGNED NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_files`
+--
+
+INSERT INTO `product_files` (`id`, `product_variant_id`, `file_name`, `url`, `created_at`, `updated_at`) VALUES
+(3, 1, 'Classic Cotton Short-5', 'product_resources/Shirts/Classic Cotton Short-5.jpg', '2023-12-21 13:31:04', '2023-08-28 05:45:17'),
+(4, 2, 'Classic Cotton Short-7', 'product_resources/Shirts/Classic Cotton Short-7.png', '2023-12-19 13:31:04', '2023-08-28 05:45:17'),
+(5, 4, 'Urban Comfort Shirt-8', 'product_resources/Shirts/Urban Comfort Shirt-8.png', '2023-12-22 14:00:27', '2023-12-13 14:00:27'),
+(6, 5, 'Urban Comfort Shirt-10', 'product_resources/Shirts/Urban Comfort Shirt-10.jpg', '2023-12-15 14:00:27', '2023-12-13 14:00:27'),
+(7, 7, 'Everyday Elegance Blouse-3', 'product_resources/Shirts/Everyday Elegance Blouse-3.jpg', '2023-12-20 14:02:43', '2023-12-20 14:02:43'),
+(8, 8, 'Everyday Elegance Blouse-9', 'product_resources/Shirts/Everyday Elegance Blouse-9.png', '2023-12-20 14:02:43', '2023-12-20 14:02:43'),
+(9, 10, 'Weekend Casual Polo-2', 'product_resources/Shirts/Weekend Casual Polo-2.jpg', '2023-12-20 14:04:24', '2023-12-20 14:04:24'),
+(10, 11, 'Weekend Casual Polo-3', 'product_resources/Shirts/Weekend Casual Polo-3.png', '2023-12-20 14:04:24', '2023-12-20 14:04:24'),
+(11, 12, 'SmartFit Dress Shirt-6', 'product_resources/Shirts/SmartFit Dress Shirt-6.jpg', '2023-12-20 14:08:20', '2023-12-20 14:08:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_variants`
+--
+
+CREATE TABLE `product_variants` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `color_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_variants`
+--
+
+INSERT INTO `product_variants` (`id`, `product_id`, `color_id`) VALUES
+(1, 25, 5),
+(2, 25, 7),
+(4, 26, 8),
+(5, 26, 10),
+(7, 27, 3),
+(8, 27, 9),
+(10, 28, 2),
+(11, 28, 3),
+(12, 29, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sizes`
+--
+
+CREATE TABLE `sizes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `size_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sizes`
+--
+
+INSERT INTO `sizes` (`id`, `size_name`) VALUES
+(1, 'XL'),
+(2, 'L'),
+(3, 'M'),
+(4, 'S'),
+(5, 'XXL'),
+(6, 'XS');
 
 -- --------------------------------------------------------
 
@@ -303,9 +419,23 @@ CREATE TABLE `users` (
 --
 
 --
+-- Indexes for table `available_sizes`
+--
+ALTER TABLE `available_sizes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `available_size` (`size_id`),
+  ADD KEY `available_color_size` (`product_variant_id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `colors`
+--
+ALTER TABLE `colors`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -383,7 +513,21 @@ ALTER TABLE `products`
 --
 ALTER TABLE `product_files`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_files_product_id_foreign` (`product_id`);
+  ADD KEY `product_files_product_id_foreign` (`product_variant_id`);
+
+--
+-- Indexes for table `product_variants`
+--
+ALTER TABLE `product_variants`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_variants_ibfk_1` (`product_id`),
+  ADD KEY `product_variants_ibfk_2` (`color_id`);
+
+--
+-- Indexes for table `sizes`
+--
+ALTER TABLE `sizes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -397,10 +541,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `available_sizes`
+--
+ALTER TABLE `available_sizes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `colors`
+--
+ALTER TABLE `colors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -454,13 +610,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `product_files`
 --
 ALTER TABLE `product_files`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `product_variants`
+--
+ALTER TABLE `product_variants`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `sizes`
+--
+ALTER TABLE `sizes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -471,6 +639,13 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `available_sizes`
+--
+ALTER TABLE `available_sizes`
+  ADD CONSTRAINT `available_color_size` FOREIGN KEY (`product_variant_id`) REFERENCES `product_variants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `available_size` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `deliveries`
@@ -507,7 +682,14 @@ ALTER TABLE `products`
 -- Constraints for table `product_files`
 --
 ALTER TABLE `product_files`
-  ADD CONSTRAINT `product_files_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `product_files_product_id_foreign` FOREIGN KEY (`product_variant_id`) REFERENCES `product_variants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `product_variants`
+--
+ALTER TABLE `product_variants`
+  ADD CONSTRAINT `product_variants_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `product_variants_ibfk_2` FOREIGN KEY (`color_id`) REFERENCES `colors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
