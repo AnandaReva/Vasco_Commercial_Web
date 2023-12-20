@@ -41,33 +41,35 @@
         </div>
     </div>
 
+ 
+
     <div class="w-full mx-auto mb-20">
         <h2 class="font-semibold text-2xl text-center mb-8">Shop by Category</h3>
             <div class="grid grid-cols-6 gap 4">
-                <div>
+                <a href="{{ route('category.show', 1 )}}">
                     <img class="w-auto h-auto" src="{{ asset('/product_resources/Misc/shirt.png') }}" alt="">
                     <p class="text-center font-semibold underline underline-offset-1 ">Shirts</p>
-                </div>
-                <div>
-                    <img class="w-auto h-auto" src="{{ asset('/product_resources/Misc/sweater.png') }}" alt="">
-                    <p class="text-center font-semibold underline underline-offset-1 ">Sweaters</p>
-                </div>
-                <div>
+                </a>
+                <a href="{{ route('category.show', 2 )}}">
                     <img class="w-auto h-auto" src="{{ asset('/product_resources/Misc/denim.png') }}" alt="">
                     <p class="text-center font-semibold underline underline-offset-1 ">Denims</p>
-                </div>
-                <div>
+                </a>
+                <a href="{{ route('category.show', 3 )}}">
                     <img class="w-auto h-auto" src="{{ asset('/product_resources/Misc/tees.png') }}" alt="">
                     <p class="text-center font-semibold underline underline-offset-1 ">Tees</p>
-                </div>
-                <div>
+                </a>
+                <a href="{{ route('category.show', 4 )}}">
                     <img class="w-auto h-auto" src="{{ asset('/product_resources/Misc/pants.png') }}" alt="">
                     <p class="text-center font-semibold underline underline-offset-1 ">Pants</p>
-                </div>
-                <div>
+                </a>
+                <a href="{{ route('category.show', 5 )}}">
+                    <img class="w-auto h-auto" src="{{ asset('/product_resources/Misc/sweater.png') }}" alt="">
+                    <p class="text-center font-semibold underline underline-offset-1 ">Sweaters</p>
+                </a>
+                <a href="{{ route('category.show', 6 )}}">
                     <img class="w-auto h-auto" src="{{ asset('/product_resources/Misc/outerWear.png') }}" alt="">
                     <p class="text-center font-semibold underline underline-offset-1 ">Outerwears</p>
-                </div>
+                </a>
             </div>
     </div>
 

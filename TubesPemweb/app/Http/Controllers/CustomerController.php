@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\ProductVariant;
 
+
 use App\Models\Order_details;
 use Illuminate\Http\Request;
 
@@ -51,7 +52,7 @@ class CustomerController extends Controller
             ->get(); */
 
         // $availableSizes = ProductVariant::all();
-        $productVariants = ProductVariant::with(['product', 'color', 'availableSizes.size'])
+        $productVariants = ProductVariant::with(['product', 'color', 'availableSizes.size', 'productFiles'])
             ->where('product_id', $idProduct)
             ->get();
 
@@ -73,7 +74,7 @@ class CustomerController extends Controller
         // Hasil transformasi
         //dd($transformedData);
 
-        //dd($productVariants);
+      //  dd($productVariants);
         // dd($product);
 
         return view('productDetail', compact('productVariants', 'product'));

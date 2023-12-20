@@ -5,20 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Size extends Model
+
+class ProductFile extends Model
 {
     use HasFactory;
 
-    protected $table = 'sizes';
+    protected $table = 'product_files';
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'integer';
     protected $fillable = [
-        'size_name',
+        'file_name',
+        'url',
     ];
 
-    public function sizes()
+    public function product()
     {
-        return $this->hasMany(AvailableSize::class, 'size_id', 'id');
+        return $this->belongsTo(ProductVariant::class);
     }
 }

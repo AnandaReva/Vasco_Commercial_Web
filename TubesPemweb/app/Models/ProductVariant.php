@@ -39,5 +39,10 @@ class ProductVariant extends Model
         return $this->hasMany(AvailableSize::class, 'product_variant_id');
     }
 
+    public function productFiles()
+    {
+        return $this->hasMany(ProductFile::class, 'product_variant_id');
+    }
+
 
 }
