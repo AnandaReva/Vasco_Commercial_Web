@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2023 at 02:54 PM
+-- Generation Time: Dec 20, 2023 at 03:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,20 +31,29 @@ CREATE TABLE `available_sizes` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `product_variant_id` bigint(20) UNSIGNED DEFAULT NULL,
   `size_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `price` double(8,2) NOT NULL
+  `price` double(8,2) NOT NULL,
+  `stock` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `available_sizes`
 --
 
-INSERT INTO `available_sizes` (`id`, `product_variant_id`, `size_id`, `price`) VALUES
-(7, 1, 1, 257000.00),
-(8, 1, 2, 255000.00),
-(9, 1, 3, 250000.00),
-(10, 1, 4, 250000.00),
-(11, 2, 2, 300000.00),
-(12, 2, 3, 290000.00);
+INSERT INTO `available_sizes` (`id`, `product_variant_id`, `size_id`, `price`, `stock`) VALUES
+(7, 1, 1, 257000.00, 318),
+(8, 1, 2, 255000.00, 337),
+(9, 1, 3, 250000.00, 42),
+(10, 1, 4, 250000.00, 205),
+(11, 2, 2, 300000.00, 214),
+(12, 2, 3, 290000.00, 108),
+(13, 4, 1, 375000.00, 226),
+(14, 4, 2, 360000.00, 122),
+(15, 4, 3, 360000.00, 258),
+(16, 4, 4, 350000.00, 239),
+(17, 5, 1, 375000.00, 76),
+(18, 5, 2, 360000.00, 328),
+(19, 5, 3, 360000.00, 49),
+(20, 5, 4, 350000.00, 268);
 
 -- --------------------------------------------------------
 
@@ -92,7 +101,11 @@ INSERT INTO `colors` (`id`, `color_name`) VALUES
 (3, 'Green'),
 (4, 'Yellow'),
 (5, 'Black'),
-(6, 'White');
+(6, 'White'),
+(7, 'purple'),
+(8, 'Grey'),
+(9, 'Magenta'),
+(10, 'Brown');
 
 -- --------------------------------------------------------
 
@@ -285,7 +298,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `product_name`, `description`, `created_at`, `updated_at`) VALUES
-(25, 1, 'Classic Cotton Tee', 'The Classic Cotton Tee is a timeless wardrobe essential that offers both comfort and style. Made from high-quality cotton fabric, this T-shirt is perfect for casual and everyday wear. Its classic design and breathable material make it versatile, allowing you to pair it with jeans for a laid-back look or dress it up with a blazer for a more polished ensemble.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
+(25, 1, 'Classic Cotton Short', 'The Classic Cotton Tee is a timeless wardrobe essential that offers both comfort and style. Made from high-quality cotton fabric, this T-shirt is perfect for casual and everyday wear. Its classic design and breathable material make it versatile, allowing you to pair it with jeans for a laid-back look or dress it up with a blazer for a more polished ensemble.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
 (26, 1, 'Urban Comfort Shirt', 'The Urban Comfort Shirt is designed for the modern urban lifestyle, providing a perfect blend of style and comfort. With a contemporary fit and urban-inspired details, this shirt is suitable for various occasions. Whether you\'re navigating city streets or attending a casual gathering, the Urban Comfort Shirt ensures you look sharp while staying at ease.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
 (27, 1, 'Everyday Elegance Blouse', 'Elevate your everyday wardrobe with the Everyday Elegance Blouse. This sophisticated blouse combines timeless elegance with comfort, making it suitable for both work and social occasions. The subtle details, such as delicate embroidery or a flattering silhouette, add a touch of refinement to your daily style, allowing you to effortlessly transition from day to evening.', '2023-08-27 13:36:16', '2023-09-07 03:55:10'),
 (28, 1, 'Weekend Casual Polo', 'Embrace laid-back style with the Weekend Casual Polo. This polo shirt is crafted for comfort, making it an ideal choice for your weekend escapades and casual outings. The relaxed fit and breathable fabric ensure a cool and effortless look, whether you\'re spending time with friends, heading to a sports event, or simply enjoying a leisurely weekend afternoon.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
@@ -319,6 +332,21 @@ CREATE TABLE `product_files` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `product_files`
+--
+
+INSERT INTO `product_files` (`id`, `product_variant_id`, `file_name`, `url`, `created_at`, `updated_at`) VALUES
+(3, 1, 'Classic Cotton Short-5', 'product_resources/Shirts/Classic Cotton Short-5.jpg', '2023-12-21 13:31:04', '2023-08-28 05:45:17'),
+(4, 2, 'Classic Cotton Short-7', 'product_resources/Shirts/Classic Cotton Short-7.png', '2023-12-19 13:31:04', '2023-08-28 05:45:17'),
+(5, 4, 'Urban Comfort Shirt-8', 'product_resources/Shirts/Urban Comfort Shirt-8.png', '2023-12-22 14:00:27', '2023-12-13 14:00:27'),
+(6, 5, 'Urban Comfort Shirt-10', 'product_resources/Shirts/Urban Comfort Shirt-10.jpg', '2023-12-15 14:00:27', '2023-12-13 14:00:27'),
+(7, 7, 'Everyday Elegance Blouse-3', 'product_resources/Shirts/Everyday Elegance Blouse-3.jpg', '2023-12-20 14:02:43', '2023-12-20 14:02:43'),
+(8, 8, 'Everyday Elegance Blouse-9', 'product_resources/Shirts/Everyday Elegance Blouse-9.png', '2023-12-20 14:02:43', '2023-12-20 14:02:43'),
+(9, 10, 'Weekend Casual Polo-2', 'product_resources/Shirts/Weekend Casual Polo-2.jpg', '2023-12-20 14:04:24', '2023-12-20 14:04:24'),
+(10, 11, 'Weekend Casual Polo-3', 'product_resources/Shirts/Weekend Casual Polo-3.png', '2023-12-20 14:04:24', '2023-12-20 14:04:24'),
+(11, 12, 'SmartFit Dress Shirt-6', 'product_resources/Shirts/SmartFit Dress Shirt-6.jpg', '2023-12-20 14:08:20', '2023-12-20 14:08:20');
+
 -- --------------------------------------------------------
 
 --
@@ -336,18 +364,15 @@ CREATE TABLE `product_variants` (
 --
 
 INSERT INTO `product_variants` (`id`, `product_id`, `color_id`) VALUES
-(1, 25, 1),
-(2, 25, 2),
-(3, 25, 3),
-(4, 26, 1),
-(5, 26, 2),
-(6, 26, 3),
-(7, 27, 4),
-(8, 27, 5),
-(9, 27, 6),
-(10, 28, 1),
-(11, 28, 2),
-(12, 29, 3);
+(1, 25, 5),
+(2, 25, 7),
+(4, 26, 8),
+(5, 26, 10),
+(7, 27, 3),
+(8, 27, 9),
+(10, 28, 2),
+(11, 28, 3),
+(12, 29, 6);
 
 -- --------------------------------------------------------
 
@@ -519,7 +544,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `available_sizes`
 --
 ALTER TABLE `available_sizes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -531,7 +556,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `colors`
 --
 ALTER TABLE `colors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -591,7 +616,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_files`
 --
 ALTER TABLE `product_files`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product_variants`
