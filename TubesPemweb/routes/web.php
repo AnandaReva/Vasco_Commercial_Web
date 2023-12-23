@@ -32,9 +32,12 @@ Route::get('/vasco.com/logout', [AuthController::class, 'logout']);
 
 
 
-Route::get('/vasco.com', [CustomerController::class, 'landing']);
+Route::get('/vasco.com', [CustomerController::class, 'landing'])->name('landing');
 
-Route::get('/vasco.com/category/{idCategory}', [CustomerController::class, 'showCategoryProducts'])->name('category.show');
+Route::get('/vasco.com/catalog', [CustomerController::class, 'showCatalog'])->name('catalog.show');
+Route::get('/vasco.com/latest', [CustomerController::class, 'showNewArrival'])->name('newArrivalView.show');
+
+Route::get('/vasco.com/category/{idCategory}', [CustomerController::class, 'showProductsPerCategory'])->name('category.show');
 
 Route::get('/vasco.com/product/{idProduct}', [CustomerController::class, 'showProduct'])->name('product.show');
 

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
+use Carbon\Carbon;
 use App\Models\Order;
-use App\Models\ProductVariant;
+use App\Models\Product;
+use App\Models\Category;
 
 
-use App\Models\Order_details;
 use Illuminate\Http\Request;
+use App\Models\Order_details;
+use App\Models\ProductVariant;
 
 
 
@@ -26,15 +27,51 @@ class CustomerController extends Controller
         return view('landingView', compact('categories'));
     }
 
-
-
-    public function showCategoryProducts($idCategory)
+    public function showCatalog(Request $request)
     {
-        // Retrieve category products based on $idCategory
-        $categoryProducts = Category::find($idCategory)->categoryProducts;
 
-        return view('categoryProducts', compact('categoryProducts'));
+        /*         $productList = Product::with('variants.productFiles')->paginate(9); */
+
+        $keyword = $request->search;
+
+        $productsList = Product::where(function ($q) use ($keyword) {
+            $q->where('product_name', 'LIKE', "%$keyword%");
+        })
+            ->orWhereHas('variants.productFiles', function ($q) use ($keyword) {
+                $q->where('file_name', 'LIKE', "%$keyword%");
+            })
+            ->with('variants.productFiles')
+            ->paginate(9);
+
+
+        return view('catalogView', compact('productsList', 'keyword'));
     }
+
+
+
+
+    public function showProductsPerCategory(Request $request, $idCategory)
+    {
+        $categoryName = Category::where('id', $idCategory)->value('category_name');
+
+        // Dari input  
+        $keyword = $request->search;
+
+        $categoryProducts = Category::with(['categoryProducts.variants.productFiles'])
+        ->find($idCategory)
+        ->categoryProducts()
+        ->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', "%$keyword%");
+        })
+        ->paginate(9);
+
+
+
+        /* dd($categoryProducts,$categoryName); */
+
+        return view('categoryProducts', compact('categoryName', 'categoryProducts', 'keyword'));
+    }
+
 
 
     public function showProduct($idProduct)
@@ -74,7 +111,7 @@ class CustomerController extends Controller
         // Hasil transformasi
         //dd($transformedData);
 
-      //  dd($productVariants);
+        //  dd($productVariants);
         // dd($product);
 
         return view('productDetail', compact('productVariants', 'product'));
@@ -102,36 +139,18 @@ class CustomerController extends Controller
         //  return view('order', compact('productVariants', 'product'));
     }
 
-
-
-    public function addToCart($id)
+    public function showNewArrival()
     {
-        $product = Product::find($id);
-        $cart = session()->get('cart');
-        if (!$cart) {
-            $cart = [
-                $id => [
-                    "name" => $product->name,
-                    "quantity" => 1,
-                    "price" => $product->price,
-                    "photo" => $product->photo,
-                ]
-            ];
-            session()->put('cart', $cart);
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
-        }
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-            session()->put('cart', $cart);
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
-        }
-        $cart[$id] = [
-            "name" => $product->name,
-            "quantity" => 1,
-            "price" => $product->price,
-            "photo" => $product->photo,
-        ];
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        $startDate = Carbon::now()->startOfMonth();
+        $endDate = Carbon::now()->endOfMonth();
+
+        $latestProducts = Product::whereBetween('created_at', [$startDate, $endDate])
+            ->with('variants.productFiles') // Sesuaikan dengan kebutuhan
+            ->orderBy('created_at', 'desc')
+            ->paginate(9);
+
+        /*  dd($latestProducts); */
+
+        return view('newArrivalView', compact('latestProducts'));
     }
 }

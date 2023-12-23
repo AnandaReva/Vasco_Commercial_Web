@@ -1,10 +1,29 @@
-@extends('layouts.layout')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Product Details')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite('resources/css/app.css')
+    <title>Vasco</title>
+</head>
 
-@section('content')
+<body>
 
+    <div class="w-full">
+        <p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Log in here to get the latest product</p>
+    </div>
+    <div>
+        <h1 class="text-center p-3 text-5xl font-semibold">Vasco</h1>
+    </div>
+    <hr>
+    <a href="..">
+        <button class="bg-black text-white hover:bg-gray-700 hover:text-white rounded py-2 px-4">
+            Back
+        </button>
+    </a>
     <h1 class="">{{ $product->product_name }}</h1>
+
 
 
     <form action="{{ route('product.order', ['idProduct' => $product->id]) }}" method="POST">
@@ -22,8 +41,6 @@
                         <input type="radio" name="selected_color" value="{{ $variant->color_id }}"
                             class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
                         {{ $variant->color->color_name }}
-
-
                         @foreach ($variant->productFiles as $productFile)
                             @if ($productFile->product_variant_id = $variant->id)
                                 {{--  @dd($productFile->url) --}}
@@ -32,8 +49,6 @@
                             @else
                             @endif
                         @endforeach
-
-
                     </label>
                 @endif
             @endforeach
@@ -50,8 +65,9 @@
                             <input type="radio" name="size_name" value="{{ $availableSize->size->size_name }}"
                                 class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" required>
                             {{ $availableSize->size->size_name }}
-                            {{--   {{ $availableSize->price }}
-                            {{ $availableSize->stock }}  --}}{{-- Tampilin data ini Pada tabel --}}
+
+                            {{ $availableSize->price }}
+                            {{ $availableSize->stock }} {{-- Tampilin data ini Pada tabel --}}
                             <br>
                             <!-- Hidden input for price -->
                             <input type="hidden" name="price" value="{{ $availableSize->price }}">
@@ -95,13 +111,6 @@
 
     </form>
 
-
-
-
-
-
-
-
     <br>
     <table class="min-w-full divide-y divide-gray-200">
         <thead>
@@ -110,7 +119,8 @@
         <tbody>
 
             <tr>
-                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</td>
+                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description
+                </td>
                 <td class="px-6 py-3 text-left">{{ $product->description }}</td>
             </tr>
             <tr>
@@ -134,5 +144,6 @@
 
     {{-- <form action="{{ route('product.buy', ['idProduct' => $product->id]) }}" method="POST"> --}}
 
+</body>
 
-@endsection
+</html>

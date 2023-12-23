@@ -17,10 +17,11 @@ class ProductFile extends Model
     protected $fillable = [
         'file_name',
         'url',
+        'product_variant_id',
     ];
 
     public function product()
     {
-        return $this->belongsTo(ProductVariant::class);
+        return $this->belongsTo(ProductVariant::class  ,  'product_variant_id', 'id' );
     }
 }
