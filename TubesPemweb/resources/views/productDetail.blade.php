@@ -17,11 +17,14 @@
         <h1 class="text-center p-3 text-5xl font-semibold">Vasco</h1>
     </div>
     <hr>
-    <a href="..">
-        <button class="bg-black text-white hover:bg-gray-700 hover:text-white rounded py-2 px-4">
-            Back
-        </button>
-    </a>
+    <button onclick="goBack()" class="bg-black text-white hover:bg-gray-700 hover:text-white rounded py-2 px-4">
+        BACK
+    </button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
     <h1 class="">{{ $product->product_name }}</h1>
 
 
@@ -105,8 +108,38 @@
         <label for="qty">Qty</label>
         <input type="number" name="qty" id="qty" min="1" required> {{-- max = stock --}}
         <br>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+
+        {{-- Kalo belom login bakal ada pop up --}}
+
+
+        <!-- Button to open modal -->
+<!-- Tombol untuk membuka modal -->
+<button type="button" class="modal-button bg-light text-sm px-2 py-1" onclick="openModal('modal1')">
+    Order
+</button>
+
+<!-- Modal RejMsg -->
+<div id="modal1" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <div class="modal-content modal-dialog modal-lg bg-white p-8 rounded">
+        <h3 class="text-2xl font-semibold mb-4">Login to Continue Process</h3>
+        <!-- Konten modal lainnya -->
+        <button type="button" class="close-button bg-blue-500 text-white px-4 py-2 rounded" onclick="closeModal('modal1')">
+            Close
+        </button>
+    </div>
+</div>
+
+<script src="{{ asset('js/popUp.js') }}"></script>
+
+      
+    {{--   @if ()
+    
+      @else
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
             type="submit">Order</button>
+      @endif --}}
+
+      
 
 
     </form>

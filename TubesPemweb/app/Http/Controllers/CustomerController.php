@@ -30,9 +30,22 @@ class CustomerController extends Controller
     public function showCatalog(Request $request)
     {
 
-        /*         $productList = Product::with('variants.productFiles')->paginate(9); */
+        // Buat serach by category !!JANGAN SENTUH
+        $idCategory = $request->input('categoriesOption');
+        $searchCategorySubmit = $request->input('searchCategorySubmit');
+        if ($searchCategorySubmit == "searchCategory" && $idCategory != null) {
+
+            //  dd($request->all(), $idCategory); 
+            return redirect()->route('category.show', ['idCategory' => $idCategory]);
+        }
+
+        /*  */
+
 
         $keyword = $request->search;
+
+        $categoryList = Category::get(['id', 'category_name']);
+            /*   dd($keyword, $categoryList) */;
 
         $productsList = Product::where(function ($q) use ($keyword) {
             $q->where('product_name', 'LIKE', "%$keyword%");
@@ -44,7 +57,7 @@ class CustomerController extends Controller
             ->paginate(9);
 
 
-        return view('catalogView', compact('productsList', 'keyword'));
+        return view('catalogView', compact('categoryList', 'productsList', 'keyword'));
     }
 
 
@@ -52,18 +65,19 @@ class CustomerController extends Controller
 
     public function showProductsPerCategory(Request $request, $idCategory)
     {
+        /* dd($request->all(), $idCategory); */
         $categoryName = Category::where('id', $idCategory)->value('category_name');
 
         // Dari input  
         $keyword = $request->search;
 
         $categoryProducts = Category::with(['categoryProducts.variants.productFiles'])
-        ->find($idCategory)
-        ->categoryProducts()
-        ->where(function ($query) use ($keyword) {
-            $query->where('product_name', 'LIKE', "%$keyword%");
-        })
-        ->paginate(9);
+            ->find($idCategory)
+            ->categoryProducts()
+            ->where(function ($query) use ($keyword) {
+                $query->where('product_name', 'LIKE', "%$keyword%");
+            })
+            ->paginate(9);
 
 
 
