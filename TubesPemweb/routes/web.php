@@ -26,12 +26,20 @@ Route::get('/vasco.com/home', function () {
 Route::get('/vasco.com/login', [AuthController::class, 'login'])->name('login');
 Route::post('/vasco.com/login', [AuthController::class, 'authenticating']);
 Route::get('/vasco.com/logout', [AuthController::class, 'logout']);
+Route::get('/vasco.com/register', [AuthController::class, 'register'])->name('register');
+Route::post('/vasco.com/register', [AuthController::class, 'register'])->name('submitRegister');
 
-//////////////////////////////////////////////////////////////////////
 
-Route::get('/vasco.com', [CustomerController::class, 'landing'])->name('home');
 
-Route::get('/vasco.com/category/{idCategory}', [CustomerController::class, 'showCategoryProducts'])->name('category.show');
+
+
+
+Route::get('/vasco.com', [CustomerController::class, 'landing'])->name('landing');
+
+Route::get('/vasco.com/catalog', [CustomerController::class, 'showCatalog'])->name('catalog.show');
+Route::get('/vasco.com/latest', [CustomerController::class, 'showNewArrival'])->name('newArrivalView.show');
+
+Route::get('/vasco.com/category/{idCategory}', [CustomerController::class, 'showProductsPerCategory'])->name('category.show');
 
 Route::get('/vasco.com/product/{idProduct}', [CustomerController::class, 'showProduct'])->name('product.show');
 
