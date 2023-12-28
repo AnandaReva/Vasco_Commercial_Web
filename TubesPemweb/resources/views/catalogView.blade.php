@@ -46,17 +46,17 @@
                 <select class="form-control" id="categoriesOption" name="categoriesOption">
                     <option value="" disabled selected>Select Category</option>
                     @foreach ($categoryList as $category)
-                    
                         <option value="{{ $category->id }}">
-                            {{ $category->category_name }} 
-                          
-                            
+                            {{ $category->category_name }}
+
+
                         </option>
                     @endforeach
                 </select>
-                <button type="submit" value="searchCategory" name="searchCategorySubmit" class="btn btn-primary">View Category</button>
+                <button type="submit" value="searchCategory" name="searchCategorySubmit" class="btn btn-primary">View
+                    Category</button>
             </form>
-            
+
 
 
         </div>

@@ -22,9 +22,10 @@ class Product extends Model
         'size',
     ];
 
-    public function productCategories()
+    public function productCategory()
     {
-        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
+        return $this->belongsTo(Category::class, 'category_product', 'product_id', 'category_id');
+   /*      return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id'); */
     }
 
     public function productOrderDetails()

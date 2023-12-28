@@ -45,7 +45,7 @@
                             class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
                         {{ $variant->color->color_name }}
                         @foreach ($variant->productFiles as $productFile)
-                            @if ($productFile->product_variant_id = $variant->id)
+                            @if ($productFile->product_variant_id == $variant->id)
                                 {{--  @dd($productFile->url) --}}
                                 <img src="{{ asset($productFile->url) }}" class="w-20 h-20"
                                     alt="{{ $productFile->file_name }}">
@@ -57,6 +57,63 @@
             @endforeach
         </div>
 
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                // Hide the "Available Size" label initially
+                $('label[for="selected_size"]').hide();
+
+                // Hide the "Qty" input initially
+                $('label[for="qty"]').hide();
+                $('#qty').hide();
+
+                // Hide the "Order" button initially
+                $('button.order-button').hide();
+
+                $('input[name="selected_color"]').change(function() {
+                    var selectedColorId = $(this).val();
+                    $('.size-container').hide();
+                    $('.size-container[data-color-id="' + selectedColorId + '"]').show();
+
+                    // Hide the label, "Qty" input, and "Order" button when changing color
+                    $('label[for="selected_size"]').hide();
+                    $('label[for="qty"]').hide();
+                    $('#qty').hide();
+                    $('button.order-button').hide();
+                });
+
+                // Add change event for size selection
+                $('input[name="size_name"]').change(function() {
+                    // Show the "Available Size" label when a size is selected
+                    $('label[for="selected_size"]').show();
+
+                    // Show the "Qty" input when both color and size are selected
+                    if ($('input[name="selected_color"]:checked').length > 0 && $(
+                            'input[name="size_name"]:checked').length > 0) {
+                        // Fetch the stock value from the currently selected size
+                        var selectedStock = $('input[name="size_name"]:checked').closest('.size-container')
+                            .find('input[name="stock"]').val();
+
+                        // Update the max attribute of the "Qty" input
+                        $('#qty').attr('max', selectedStock);
+
+                        $('label[for="qty"]').show();
+                        $('#qty').show();
+                        $('button.order-button').show();
+                    } else {
+                        // Hide the "Qty" input and "Order" button if size is not selected
+                        $('label[for="qty"]').hide();
+                        $('#qty').hide();
+                        $('button.order-button').hide();
+                    }
+                });
+            });
+        </script>
+
         <label for="selected_size">Available Size:</label>
 
         <div class="flex" id="sizes-container">
@@ -65,17 +122,23 @@
                     @foreach ($variant->availableSizes as $availableSize)
                         <div class="ml-4 mt-2 size-container" data-color-id="{{ $variant->color_id }}"
                             style="display: none;">
-                            <input type="radio" name="size_name" value="{{ $availableSize->size->size_name }}"
+                            <input type="radio" name="size_name"
+                                value="{{ $availableSize->size->size_name }},{{ $availableSize->price }},{{ $availableSize->stock }}"
                                 class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" required>
                             {{ $availableSize->size->size_name }}
 
+
                             {{ $availableSize->price }}
-                            {{ $availableSize->stock }} {{-- Tampilin data ini Pada tabel --}}
+                            {{ $availableSize->stock }}
+                            {{-- Tampilin data ini Pada tabel --}}
                             <br>
-                            <!-- Hidden input for price -->
+
+                            {{--      <!-- Hidden input -->
                             <input type="hidden" name="price" value="{{ $availableSize->price }}">
-                            <!-- Hidden input for stock -->
-                            <input type="hidden" name="stock" value="{{ $availableSize->stock }}">
+                            {{ $availableSize->price }}
+                            <input type="hidden" name="stock" value="{{ $availableSize->stock }}">--}}
+
+
                             <br>
 
 
@@ -88,58 +151,52 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('input[name="selected_color"]').change(function() {
-                    var selectedColorId = $(this).val();
-                    $('.size-container').hide();
-                    $('.size-container[data-color-id="' + selectedColorId + '"]').show();
-                });
-            });
-        </script>
 
 
-        <script>
-            console.log(priceSize);
-        </script>
+
 
 
         <label for="qty">Qty</label>
-        <input type="number" name="qty" id="qty" min="1" required> {{-- max = stock --}}
+        <input type="number" name="qty" id="qty" min="1" required>
+
+        `
         <br>
 
-        {{-- Kalo belom login bakal ada pop up --}}
 
 
-        <!-- Button to open modal -->
-<!-- Tombol untuk membuka modal -->
-<button type="button" class="modal-button bg-light text-sm px-2 py-1" onclick="openModal('modal1')">
-    Order
-</button>
 
-<!-- Modal RejMsg -->
-<div id="modal1" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-    <div class="modal-content modal-dialog modal-lg bg-white p-8 rounded">
-        <h3 class="text-2xl font-semibold mb-4">Login to Continue Process</h3>
-        <!-- Konten modal lainnya -->
-        <button type="button" class="close-button bg-blue-500 text-white px-4 py-2 rounded" onclick="closeModal('modal1')">
-            Close
+        <button type="submit"
+            class="bg-black text-white hover:bg-gray-700 hover:text-white rounded py-2 px-4 order-button">
+            Order
         </button>
-    </div>
-</div>
 
-<script src="{{ asset('js/popUp.js') }}"></script>
 
-      
-    {{--   @if ()
-    
-      @else
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-            type="submit">Order</button>
-      @endif --}}
+        {{-- Kalo belom login bakal ada pop up --}}
+        {{--  <!-- Tombol untuk membuka modal -->
+        <button type="button"
+            class="bg-black text-white hover:bg-gray-700 hover:text-white rounded py-2 px-4 order-button"
+            onclick="openModal('modal1')">
+            Order
+        </button>
 
-      
+        <!-- Modal Login -->
+        <div id="modal1" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+            <div class="modal-content modal-dialog modal-lg bg-white p-8 rounded border-2">
+                <h3 class="text-2xl font-semibold mb-4">Login to Continue Process</h3>
+                <!-- Konten modal lainnya -->
+                <button type="button" class="close-button bg-blue-500 text-white px-4 py-2 rounded"
+                    onclick="closeModal('modal1')">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <script src="{{ asset('js/popUp.js') }}"></script> --}}
+
+
+
+
+
 
 
     </form>

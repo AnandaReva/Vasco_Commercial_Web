@@ -139,18 +139,24 @@ class CustomerController extends Controller
             'qty' => 'required|numeric|min:1',
         ]);
 
-        // Get the selected values from the form
+
+        // Dapatin pilihan warna
         $selectedColor = $request->input('selected_color');
-        $selectedSize = $request->input('size_name');
+        //  Pisahkan string size_name menjadi array menggunakan koma sebagai pembatas
+        $sizeValues = explode(',', $request->input('size_name'));
+
+        // Pisahkan array menjadi 3 bagian
+        $selectedSize = $sizeValues[0];
+        $price = $sizeValues[1];
+        $stock = $sizeValues[2];
+
         $qty = $request->input('qty');
-        $price = $request->input('price');
-        $stock = $request->input('stock');
         $totalPrice = $price * $qty;
 
-        dd($selectedColor, $selectedSize, $qty, $price, $totalPrice, $stock);
+        /*    dd($selectedColor, $selectedSize, $qty, $price, $totalPrice, $stock); */
 
 
-        //  return view('order', compact('productVariants', 'product'));
+        return view('orderView', compact('selectedColor','selectedSize', 'price', 'stock' ,'qty', 'totalPrice',));
     }
 
     public function showNewArrival()

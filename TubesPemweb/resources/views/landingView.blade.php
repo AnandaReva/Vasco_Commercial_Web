@@ -132,23 +132,11 @@
     </div>
 
     <div class="w-full mx-auto mb-20">
-        <h2 class="font-semibold text-2xl text-center">Vasco's Favorites</h3>
+        <h2 class="font-semibold text-2xl text-center">Vasco's Favorites</h2>
             <h2 class="text-xl text-center mb-8">Beautifully functional, purposefully designed, passionately crafted,
-                and loved by Vasco.</h3>
-                <h1>Shop by Category</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            @foreach ($categories as $category)
-                                <th>
-                                    <a href="{{ route('category.show', ['idCategory' => $category->id]) }}">
-                                        {{ $category->category_name }}
-                                    </a>
-                                </th>
-                            @endforeach
-                        </tr>
-                    </thead>
-                </table>
+                and loved by Vasco.</h2>
+
+
     </div>
 
     <div class="w-full mx-auto mb-20">
@@ -156,19 +144,7 @@
             <h2 class="text-xl text-center mb-8">What they say about Vasco's wardrobe</h3>
                 <div class="grid grid-cols-2 gap-4">
                     <section>
-                        <table>
-                            <thead>
-                                <tr>
-                                    @foreach ($categories as $category)
-                                        <th>
-                                            <a href="{{ route('category.show', ['idCategory' => $category->id]) }}">
-                                                {{ $category->category_name }}
-                                            </a>
-                                        </th>
-                                    @endforeach
-                                </tr>
-                            </thead>
-                        </table>
+
                     </section>
 
                     <section>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -29,7 +30,24 @@ Route::get('/vasco.com/logout', [AuthController::class, 'logout']);
 
 
 
+//Admin
+Route::get('/vasco.com/admin/catalog', [AdminController::class, 'showCatalogAdmin'])->name('catalogAdmin.show');
+Route::get('/vasco.com/admin/product/{idProduct}', [AdminController::class, 'detailProductAdmin'])->name('productAdmin.show');
 
+Route::get('/vasco.com/admin/insertProduct', [AdminController::class, 'insertProductAdmin'])->name('productAdmin.insert');
+/* Route::get('/vasco.com/admin/product/insert', [AdminController::class, 'insertProductAdmin'])->name('productAdmin.insert');
+Route::post('/vasco.com/admin/product/store', [AdminController::class, 'storeProductAdmin'])->name('productAdmin.store'); */
+
+/* 
+Route::get('/vasco.com/admin/product/{idProduct}/edit', [AdminController::class, 'editProductAdmin'])->name('productAdmin.edit');
+Route::post('/vasco.com/admin/product/{idProduct}/edit', [AdminController::class, 'updateProductAdmin'])->name('productAdmin.update');
+Route::get('/vasco.com/admin/product/{idProduct}/delete', [AdminController::class, 'deleteProductAdmin'])->name('productAdmin.delete');
+Route::get('/vasco.com/admin/product/{idProduct}/destroy', [AdminController::class, 'destroyProductAdmin'])->name('productAdmin.destroy'); */
+
+
+
+
+//Customer
 
 
 Route::get('/vasco.com', [CustomerController::class, 'landing'])->name('landing');
