@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Session;
 
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\Product;
@@ -18,6 +21,7 @@ use App\Models\ProductVariant;
 
 class CustomerController extends Controller
 {
+<<<<<<< HEAD
     public function landing(Request $request)
     {
 
@@ -46,6 +50,17 @@ class CustomerController extends Controller
 
             return view('landingView', compact('categories'));
         }
+=======
+    public function landing()
+    {       /*  $products = Product::join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'categories.category_name')
+            ->get();
+        $categories = Category::all();
+       // dd($products);
+        return view('landingView', compact( 'products')); */
+        $categories = Category::with('categoryProducts')->get();
+        return view('landingView', compact('categories'));
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
     }
 
     public function showCatalog(Request $request)
@@ -177,7 +192,11 @@ class CustomerController extends Controller
         /*    dd($selectedColor, $selectedSize, $qty, $price, $totalPrice, $stock); */
 
 
+<<<<<<< HEAD
         return view('orderView', compact('selectedColor', 'selectedSize', 'price', 'stock', 'qty', 'totalPrice',));
+=======
+        return view('orderView', compact('selectedColor','selectedSize', 'price', 'stock' ,'qty', 'totalPrice',));
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
     }
 
     public function showNewArrival()

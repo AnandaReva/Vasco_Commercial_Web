@@ -24,12 +24,19 @@ Route::get('/vasco.com/home', function () {
     return view('loginView');
 });
 
+<<<<<<< HEAD
 
 Route::get('/vasco.com/login', [AuthController::class, 'login'])->name('login');
 Route::post('/vasco.com/login', [AuthController::class, 'authenticating']);
 Route::get('/vasco.com/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/vasco.com/register', [AuthController::class, 'register'])->name('register');
 Route::post('/vasco.com/register', [AuthController::class, 'register'])->name('submitRegister');
+=======
+Route::get('/vasco.com/login', [AuthController::class, 'login'])->name('login');
+Route::post('/vasco.com/login', [AuthController::class, 'authenticating']);
+Route::get('/vasco.com/logout', [AuthController::class, 'logout']);
+
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 
 
 //Admin
@@ -52,7 +59,11 @@ Route::get('/vasco.com/admin/product/{idProduct}/destroy', [AdminController::cla
 //Customer
 
 
+<<<<<<< HEAD
 Route::get('vasco.com', [CustomerController::class, 'landing'])->name('landing');
+=======
+Route::get('/vasco.com', [CustomerController::class, 'landing'])->name('landing');
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 
 Route::get('/vasco.com/catalog', [CustomerController::class, 'showCatalog'])->name('catalog.show');
 Route::get('/vasco.com/latest', [CustomerController::class, 'showNewArrival'])->name('newArrivalView.show');

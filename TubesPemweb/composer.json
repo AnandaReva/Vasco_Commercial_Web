@@ -7,12 +7,18 @@
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
+<<<<<<< HEAD
         "kreait/firebase-php": "^7.9",
         "kreait/laravel-firebase": "^5.5",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "midtrans/midtrans-php": "^2.5"
+=======
+        "laravel/framework": "^10.10",
+        "laravel/sanctum": "^3.3",
+        "laravel/tinker": "^2.8"
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

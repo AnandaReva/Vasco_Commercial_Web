@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Dec 30, 2023 at 08:43 AM
+=======
+-- Generation Time: Dec 23, 2023 at 08:42 AM
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -198,8 +202,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2023_12_05_061530_order_details_table', 2),
 (12, '2023_12_05_061932_payments_table', 2),
 (13, '2023_12_05_062750_deliveries_table', 2),
+<<<<<<< HEAD
 (14, '2023_12_10_080323_create_product_files_table', 3),
 (15, '2023_12_30_053952_create_transactions_table', 4);
+=======
+(14, '2023_12_10_080323_create_product_files_table', 3);
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 
 -- --------------------------------------------------------
 
@@ -401,6 +409,7 @@ INSERT INTO `sizes` (`id`, `size_name`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `transactions`
 --
 
@@ -417,6 +426,8 @@ CREATE TABLE `transactions` (
 -- --------------------------------------------------------
 
 --
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 -- Table structure for table `users`
 --
 
@@ -547,6 +558,7 @@ ALTER TABLE `sizes`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -554,6 +566,8 @@ ALTER TABLE `transactions`
   ADD KEY `transactions_user_id_foreign` (`user_id`);
 
 --
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -568,7 +582,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `available_sizes`
 --
 ALTER TABLE `available_sizes`
+<<<<<<< HEAD
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+=======
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -604,7 +622,11 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
+<<<<<<< HEAD
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+=======
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -655,12 +677,15 @@ ALTER TABLE `sizes`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -720,12 +745,15 @@ ALTER TABLE `product_files`
 ALTER TABLE `product_variants`
   ADD CONSTRAINT `product_variants_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `product_variants_ibfk_2` FOREIGN KEY (`color_id`) REFERENCES `colors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+<<<<<<< HEAD
 
 --
 -- Constraints for table `transactions`
 --
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

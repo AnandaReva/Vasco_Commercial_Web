@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
+=======
+div<!DOCTYPE html>
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 <html lang="en">
 
 <head>

@@ -10,6 +10,7 @@
 
 <body>
     <div class="w-full">
+<<<<<<< HEAD
 
         @if (Session::get('email') != null)
             <span class="block sm:inline">
@@ -45,6 +46,11 @@
 
         
         
+=======
+        <p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Log in here to get the latest product</p>
+    </div>
+    <div>
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
         <h1 class="text-center p-3 text-5xl font-semibold">Vasco</h1>
         {{-- Searchbar --}}
         <section class="w-1/2 row-span-2 bg-cover bg-no-repeat bg-right justify-end items-start">
@@ -165,8 +171,13 @@
 
     <div class="w-full mx-auto mb-20">
         <h2 class="font-semibold text-2xl text-center">Vasco's Favorites</h2>
+<<<<<<< HEAD
         <h2 class="text-xl text-center mb-8">Beautifully functional, purposefully designed, passionately crafted,
             and loved by Vasco.</h2>
+=======
+            <h2 class="text-xl text-center mb-8">Beautifully functional, purposefully designed, passionately crafted,
+                and loved by Vasco.</h2>
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 
 
     </div>

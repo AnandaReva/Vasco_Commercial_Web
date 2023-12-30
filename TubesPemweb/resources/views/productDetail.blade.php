@@ -136,7 +136,11 @@
                             {{--      <!-- Hidden input -->
                             <input type="hidden" name="price" value="{{ $availableSize->price }}">
                             {{ $availableSize->price }}
+<<<<<<< HEAD
                             <input type="hidden" name="stock" value="{{ $availableSize->stock }}"> --}}
+=======
+                            <input type="hidden" name="stock" value="{{ $availableSize->stock }}">--}}
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
 
 
                             <br>
@@ -215,6 +219,7 @@
             </tr>
             <tr>
                 <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</td>
+<<<<<<< HEAD
                 <td class="px-6 py-3 text-left">Tampilin data price disini pk js</td>
             </tr>
             <tr>
@@ -225,6 +230,17 @@
             <tr>
                 <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</td>
                 <td class="px-6 py-3 text-left"> - </td>
+=======
+                <td class="px-6 py-3 text-left"></td> {{-- Tampilin data price disini --}}
+            </tr>
+            <tr>
+                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</td>
+                <td class="px-6 py-3 text-left"></td>
+            </tr>
+            <tr>
+                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</td>
+                <td class="px-6 py-3 text-left"></td>
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
             </tr>
         </tbody>
     </table>
