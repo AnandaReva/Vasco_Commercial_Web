@@ -42,10 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+<<<<<<< HEAD
 
 
     public function transactions()
     {
         return $this->hasMany(Transaction::class, 'id', 'user_id');
     }
+=======
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 }

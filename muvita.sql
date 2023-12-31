@@ -3,7 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Dec 31, 2023 at 07:43 AM
+=======
+<<<<<<< HEAD
+-- Generation Time: Dec 30, 2023 at 08:43 AM
+=======
+-- Generation Time: Dec 23, 2023 at 08:42 AM
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -198,9 +206,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2023_12_05_061530_order_details_table', 2),
 (12, '2023_12_05_061932_payments_table', 2),
 (13, '2023_12_05_062750_deliveries_table', 2),
+<<<<<<< HEAD
 (14, '2023_12_10_080323_create_product_files_table', 3),
 (15, '2023_12_30_053952_create_transactions_table', 4),
 (17, '2023_12_31_051226_add_columns_to_transactions_table', 5);
+=======
+<<<<<<< HEAD
+(14, '2023_12_10_080323_create_product_files_table', 3),
+(15, '2023_12_30_053952_create_transactions_table', 4);
+=======
+(14, '2023_12_10_080323_create_product_files_table', 3);
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
 -- --------------------------------------------------------
 
@@ -402,12 +419,17 @@ INSERT INTO `sizes` (`id`, `size_name`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 -- Table structure for table `transactions`
 --
 
 CREATE TABLE `transactions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
+<<<<<<< HEAD
   `total_price` decimal(10,2) NOT NULL,
   `status` enum('pending','success','failed') NOT NULL DEFAULT 'pending',
   `snap_token` varchar(255) DEFAULT NULL,
@@ -429,6 +451,20 @@ INSERT INTO `transactions` (`id`, `user_id`, `total_price`, `status`, `snap_toke
 -- --------------------------------------------------------
 
 --
+=======
+  `price` decimal(10,2) NOT NULL,
+  `status` enum('pending','success','failed') NOT NULL DEFAULT 'pending',
+  `snap_token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 -- Table structure for table `users`
 --
 
@@ -444,6 +480,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+<<<<<<< HEAD
 -- Dumping data for table `users`
 --
 
@@ -452,6 +489,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (2, 'Reva Ananda', 'aarevaananda@gmail.com', NULL, '$2y$12$LbbaTYBCnLOBd0o.BL8l.OCYCre7c9XHLX.97S6A/ytgAxVjJXczu', NULL, '2023-12-30 21:31:38', '2023-12-30 21:31:38');
 
 --
+=======
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 -- Indexes for dumped tables
 --
 
@@ -567,16 +606,28 @@ ALTER TABLE `sizes`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
+<<<<<<< HEAD
   ADD KEY `transactions_user_id_foreign` (`user_id`),
   ADD KEY `transactions_product_id_foreign` (`product_id`),
   ADD KEY `transactions_variant_id_foreign` (`product_variant_id`),
   ADD KEY `transactions_availablesize_id_foreign` (`available_size_id`);
 
 --
+=======
+  ADD KEY `transactions_user_id_foreign` (`user_id`);
+
+--
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -591,7 +642,15 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `available_sizes`
 --
 ALTER TABLE `available_sizes`
+<<<<<<< HEAD
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+=======
+<<<<<<< HEAD
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+=======
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -627,7 +686,15 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
+<<<<<<< HEAD
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+=======
+<<<<<<< HEAD
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+=======
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -678,6 +745,7 @@ ALTER TABLE `sizes`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -688,6 +756,21 @@ ALTER TABLE `transactions`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+=======
+<<<<<<< HEAD
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
 --
 -- Constraints for dumped tables
@@ -743,15 +826,25 @@ ALTER TABLE `product_files`
 ALTER TABLE `product_variants`
   ADD CONSTRAINT `product_variants_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `product_variants_ibfk_2` FOREIGN KEY (`color_id`) REFERENCES `colors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
 --
 -- Constraints for table `transactions`
 --
 ALTER TABLE `transactions`
+<<<<<<< HEAD
   ADD CONSTRAINT `transactions_availablesize_id_foreign` FOREIGN KEY (`available_size_id`) REFERENCES `available_sizes` (`id`),
   ADD CONSTRAINT `transactions_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `transactions_variant_id_foreign` FOREIGN KEY (`product_variant_id`) REFERENCES `product_variants` (`id`);
+=======
+  ADD CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

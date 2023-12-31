@@ -57,6 +57,10 @@
                 <td>
                     <label>Product variants</label>
                 </td>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
                 {{-- <td>
 
                     <div id="discussion-container">
@@ -115,6 +119,14 @@
 
                     </div>
                 </td> --}}
+<<<<<<< HEAD
+=======
+=======
+                <td>
+                    <input type="" class="border">
+                </td>
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
             </tr>
 
 

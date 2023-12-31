@@ -2,13 +2,24 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Session;
 
+=======
+<<<<<<< HEAD
+use Illuminate\Support\Facades\Session;
+
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
+<<<<<<< HEAD
 use App\Models\User;
+=======
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
 
 use Illuminate\Http\Request;
@@ -19,6 +30,10 @@ use App\Models\ProductVariant;
 
 class CustomerController extends Controller
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
     public function landing(Request $request)
     {
 
@@ -39,6 +54,7 @@ class CustomerController extends Controller
             $displayName = $decodedUserInfo['displayName'];
             $email = $decodedUserInfo['email'];
 
+<<<<<<< HEAD
 
             // cek apakah user sudah terdaftar di database
             $userCek = User::where('email', $email)->first();
@@ -71,6 +87,27 @@ class CustomerController extends Controller
 
             return view('landingView', compact('categories'));
         }
+=======
+            /*  dd($uid, $displayName, $email); */
+
+            Session::put('idLogin', $uid);
+            Session::put('username', $displayName);
+            Session::put('email', $email);
+
+            return view('landingView', compact('categories'));
+        }
+=======
+    public function landing()
+    {       /*  $products = Product::join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'categories.category_name')
+            ->get();
+        $categories = Category::all();
+       // dd($products);
+        return view('landingView', compact( 'products')); */
+        $categories = Category::with('categoryProducts')->get();
+        return view('landingView', compact('categories'));
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
     }
 
     public function showCatalog(Request $request)
@@ -177,7 +214,41 @@ class CustomerController extends Controller
         return view('productDetail', compact('productVariants', 'product'));
     }
 
+<<<<<<< HEAD
    
+=======
+    public function order(Request $request, $idProduct)
+    {
+        $request->validate([
+            'selected_color' => 'required',
+            'size_name' => 'required',
+            'qty' => 'required|numeric|min:1',
+        ]);
+
+
+        // Dapatin pilihan warna
+        $selectedColor = $request->input('selected_color');
+        //  Pisahkan string size_name menjadi array menggunakan koma sebagai pembatas
+        $sizeValues = explode(',', $request->input('size_name'));
+
+        // Pisahkan array menjadi 3 bagian
+        $selectedSize = $sizeValues[0];
+        $price = $sizeValues[1];
+        $stock = $sizeValues[2];
+
+        $qty = $request->input('qty');
+        $totalPrice = $price * $qty;
+
+        /*    dd($selectedColor, $selectedSize, $qty, $price, $totalPrice, $stock); */
+
+
+<<<<<<< HEAD
+        return view('orderView', compact('selectedColor', 'selectedSize', 'price', 'stock', 'qty', 'totalPrice',));
+=======
+        return view('orderView', compact('selectedColor','selectedSize', 'price', 'stock' ,'qty', 'totalPrice',));
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+    }
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
     public function showNewArrival()
     {
