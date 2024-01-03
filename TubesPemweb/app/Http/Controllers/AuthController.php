@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Kreait\Laravel\Firebase\Facades\Firebase;
 
+use Kreait\Firebase\Factory;
+use Firebase\ServiceAccount;
+use App\Models\User;
+
+
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -38,12 +43,12 @@ class AuthController extends Controller
         try {
             $createdUser = $this->firebaseAuth->createUserWithEmailAndPassword($email, $password);
             Session::flash('success', 'Registration successful!');
-            echo('ping');
+            echo ('ping');
         } catch (\Exception $e) {
             Session::flash('error', 'Registration failed. Please try again.');
-            echo('pong');
+            echo ('pong');
         }
-        echo('prank');
+        echo ('prank');
         return redirect()->route('login');
     }
 
@@ -91,10 +96,11 @@ class AuthController extends Controller
     }
 
 
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
         session()->flush();
-        return redirect('/vasco.com/login');
+
+        return redirect('/vasco.com');
     }
 }

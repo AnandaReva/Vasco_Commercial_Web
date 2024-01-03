@@ -10,9 +10,63 @@
 
 <body>
     <div class="w-full">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+
+        @if (Session::get('email') != null)
+            <span class="block sm:inline">
+                <p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Welcome:
+                    <span>{{ Session::get('username') }}</span>
+                </p>
+            </span>
+
+            <a href="{{ route('logout') }}">
+                <p>Logout</p>
+            </a>
+        @else
+            <a href="{{ route('register') }}">
+                <p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Log in here to get the latest
+                    product</p>
+            </a>
+<<<<<<< HEAD
+        @endif
+
+        {{-- debaug --}}
+        session: {{ Session::get('email') }}
+        <br> {{ Session::get('idLogin') }}
+=======
+
+            
+        @endif
+
+            {{-- debaug --}}
+       session:  {{ Session::get('email') }}
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+
+
+
+
+
+
+    </div>
+
+
+    <div>
+
+<<<<<<< HEAD
+
+
+=======
+        
+        
+=======
         <p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Log in here to get the latest product</p>
     </div>
     <div>
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
         <h1 class="text-center p-3 text-5xl font-semibold">Vasco</h1>
         {{-- Searchbar --}}
         <section class="w-1/2 row-span-2 bg-cover bg-no-repeat bg-right justify-end items-start">
@@ -48,7 +102,8 @@
                     </div>
 
                     <form method="GET" action="{{ route('catalog.show') }}">
-                        <button type="submit" class="flex items-center bg-white mx-auto rounded-md px-10 py-2 text-sm font-semibold">
+                        <button type="submit"
+                            class="flex items-center bg-white mx-auto rounded-md px-10 py-2 text-sm font-semibold">
                             SHOP NOW
                         </button>
                     </form>
@@ -85,7 +140,8 @@
                     <p class="text-center font-semibold underline underline-offset-1 ">Sweaters</p>
                 </a>
                 <a href="{{ route('category.show', 6) }}">
-                    <img class="w-auto h-auto" src="{{ asset('/product_resources/Misc/outerWear.png') }}" alt="">
+                    <img class="w-auto h-auto" src="{{ asset('/product_resources/Misc/outerWear.png') }}"
+                        alt="">
                     <p class="text-center font-semibold underline underline-offset-1 ">Outerwears</p>
                 </a>
             </div>
@@ -130,23 +186,21 @@
     </div>
 
     <div class="w-full mx-auto mb-20">
-        <h2 class="font-semibold text-2xl text-center">Vasco's Favorites</h3>
+        <h2 class="font-semibold text-2xl text-center">Vasco's Favorites</h2>
+<<<<<<< HEAD
+        <h2 class="text-xl text-center mb-8">Beautifully functional, purposefully designed, passionately crafted,
+            and loved by Vasco.</h2>
+=======
+<<<<<<< HEAD
+        <h2 class="text-xl text-center mb-8">Beautifully functional, purposefully designed, passionately crafted,
+            and loved by Vasco.</h2>
+=======
             <h2 class="text-xl text-center mb-8">Beautifully functional, purposefully designed, passionately crafted,
-                and loved by Vasco.</h3>
-                <h1>Shop by Category</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            @foreach ($categories as $category)
-                            <th>
-                                <a href="{{ route('category.show', ['idCategory' => $category->id]) }}">
-                                    {{ $category->category_name }}
-                                </a>
-                            </th>
-                            @endforeach
-                        </tr>
-                    </thead>
-                </table>
+                and loved by Vasco.</h2>
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+
+
     </div>
 
     <div class="w-full mx-auto mb-20">
@@ -154,19 +208,7 @@
             <h2 class="text-xl text-center mb-8">What they say about Vasco's wardrobe</h3>
                 <div class="grid grid-cols-2 gap-4">
                     <section>
-                        <table>
-                            <thead>
-                                <tr>
-                                    @foreach ($categories as $category)
-                                    <th>
-                                        <a href="{{ route('category.show', ['idCategory' => $category->id]) }}">
-                                            {{ $category->category_name }}
-                                        </a>
-                                    </th>
-                                    @endforeach
-                                </tr>
-                            </thead>
-                        </table>
+
                     </section>
 
                     <section>
@@ -175,6 +217,7 @@
                 </div>
 
     </div>
+
 
 </body>
 

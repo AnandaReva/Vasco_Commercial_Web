@@ -2,10 +2,24 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
+use Illuminate\Support\Facades\Session;
+
+=======
+<<<<<<< HEAD
+use Illuminate\Support\Facades\Session;
+
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
+<<<<<<< HEAD
+use App\Models\User;
+=======
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
 
 use Illuminate\Http\Request;
@@ -16,6 +30,73 @@ use App\Models\ProductVariant;
 
 class CustomerController extends Controller
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+    public function landing(Request $request)
+    {
+
+        $categories = Category::with('categoryProducts')->get();
+
+        $userInfo = $request->query('userInfo');
+
+        // Ambil nilai userInfo dari query string
+        if ($userInfo == null) {
+
+            return view('landingView', compact('categories'));
+        } else {
+
+            // Decode nilai userInfo jika perlu
+            $decodedUserInfo = json_decode($userInfo, true);
+
+            $uid = $decodedUserInfo['uid'];
+            $displayName = $decodedUserInfo['displayName'];
+            $email = $decodedUserInfo['email'];
+
+<<<<<<< HEAD
+
+            // cek apakah user sudah terdaftar di database
+            $userCek = User::where('email', $email)->first();
+            if ($userCek == null){
+                $user = new User;
+                $user->name = $displayName;
+                $user->email = $email;
+                $user->password = bcrypt('akascabulsangat');
+                $user->save();
+            }
+
+
+            $idLogin = User::where('email', $email)->value('id');
+         /*   dd($idLogin); */
+
+            // Simpan data user ke session
+
+
+
+            Session::put('idLogin', $idLogin);
+            Session::put('username', $displayName);
+            Session::put('email', $email);
+
+
+
+
+
+
+
+
+            return view('landingView', compact('categories'));
+        }
+=======
+            /*  dd($uid, $displayName, $email); */
+
+            Session::put('idLogin', $uid);
+            Session::put('username', $displayName);
+            Session::put('email', $email);
+
+            return view('landingView', compact('categories'));
+        }
+=======
     public function landing()
     {       /*  $products = Product::join('categories', 'products.category_id', '=', 'categories.id')
             ->select('products.*', 'categories.category_name')
@@ -25,14 +106,29 @@ class CustomerController extends Controller
         return view('landingView', compact( 'products')); */
         $categories = Category::with('categoryProducts')->get();
         return view('landingView', compact('categories'));
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
     }
 
     public function showCatalog(Request $request)
     {
 
-        /*         $productList = Product::with('variants.productFiles')->paginate(9); */
+        // Buat serach by category !!JANGAN SENTUH
+        $idCategory = $request->input('categoriesOption');
+        $searchCategorySubmit = $request->input('searchCategorySubmit');
+        if ($searchCategorySubmit == "searchCategory" && $idCategory != null) {
+
+            //  dd($request->all(), $idCategory); 
+            return redirect()->route('category.show', ['idCategory' => $idCategory]);
+        }
+
+        /*  */
+
 
         $keyword = $request->search;
+
+        $categoryList = Category::get(['id', 'category_name']);
+            /*   dd($keyword, $categoryList) */;
 
         $productsList = Product::where(function ($q) use ($keyword) {
             $q->where('product_name', 'LIKE', "%$keyword%");
@@ -44,7 +140,7 @@ class CustomerController extends Controller
             ->paginate(9);
 
 
-        return view('catalogView', compact('productsList', 'keyword'));
+        return view('catalogView', compact('categoryList', 'productsList', 'keyword'));
     }
 
 
@@ -52,18 +148,19 @@ class CustomerController extends Controller
 
     public function showProductsPerCategory(Request $request, $idCategory)
     {
+        /* dd($request->all(), $idCategory); */
         $categoryName = Category::where('id', $idCategory)->value('category_name');
 
         // Dari input  
         $keyword = $request->search;
 
         $categoryProducts = Category::with(['categoryProducts.variants.productFiles'])
-        ->find($idCategory)
-        ->categoryProducts()
-        ->where(function ($query) use ($keyword) {
-            $query->where('product_name', 'LIKE', "%$keyword%");
-        })
-        ->paginate(9);
+            ->find($idCategory)
+            ->categoryProducts()
+            ->where(function ($query) use ($keyword) {
+                $query->where('product_name', 'LIKE', "%$keyword%");
+            })
+            ->paginate(9);
 
 
 
@@ -117,6 +214,9 @@ class CustomerController extends Controller
         return view('productDetail', compact('productVariants', 'product'));
     }
 
+<<<<<<< HEAD
+   
+=======
     public function order(Request $request, $idProduct)
     {
         $request->validate([
@@ -125,19 +225,30 @@ class CustomerController extends Controller
             'qty' => 'required|numeric|min:1',
         ]);
 
-        // Get the selected values from the form
+
+        // Dapatin pilihan warna
         $selectedColor = $request->input('selected_color');
-        $selectedSize = $request->input('size_name');
+        //  Pisahkan string size_name menjadi array menggunakan koma sebagai pembatas
+        $sizeValues = explode(',', $request->input('size_name'));
+
+        // Pisahkan array menjadi 3 bagian
+        $selectedSize = $sizeValues[0];
+        $price = $sizeValues[1];
+        $stock = $sizeValues[2];
+
         $qty = $request->input('qty');
-        $price = $request->input('price');
-        $stock = $request->input('stock');
         $totalPrice = $price * $qty;
 
-        dd($selectedColor, $selectedSize, $qty, $price, $totalPrice, $stock);
+        /*    dd($selectedColor, $selectedSize, $qty, $price, $totalPrice, $stock); */
 
 
-        //  return view('order', compact('productVariants', 'product'));
+<<<<<<< HEAD
+        return view('orderView', compact('selectedColor', 'selectedSize', 'price', 'stock', 'qty', 'totalPrice',));
+=======
+        return view('orderView', compact('selectedColor','selectedSize', 'price', 'stock' ,'qty', 'totalPrice',));
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
     }
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
     public function showNewArrival()
     {

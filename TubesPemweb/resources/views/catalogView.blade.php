@@ -15,7 +15,15 @@
 
 <body>
     <div class="w-full">
+<<<<<<< HEAD
+        <a href="{{ route('login') }}"><p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Log in here to get the latest product</p></a>
+=======
+<<<<<<< HEAD
+        <a href="{{ route('login') }}"><p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Log in here to get the latest product</p></a>
+=======
         <p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Log in here to get the latest product</p>
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
     </div>
     <div>
         <h1 class="text-center p-3 text-5xl font-semibold">Vasco</h1>
@@ -30,12 +38,36 @@
     {{--     <div class="grid grid-cols-2"> --}}
     <section class="w-1/2 row-span-2 bg-cover bg-no-repeat bg-right justify-end items-start">
 
-        {{-- Searching --}}
-        <form method="get", action="">
-            <input name="search" type="search" wire:model='search' placeholder="Type product..."
-                class="p-2 border rounded">
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Search</button>
-        </form>
+        <div class="flex items-center space-x-4">
+            {{-- Searching --}}
+            <form method="get" action="">
+                <input name="search" type="search" wire:model='search' placeholder="Type product..."
+                    class="p-2 border rounded">
+                <button type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Search</button>
+            </form>
+
+            <label for="category" class="mr-2">Search by Category</label>
+
+
+            <form class="form-horizontal" action="{{ route('catalog.show') }}" method="get">
+                <select class="form-control" id="categoriesOption" name="categoriesOption">
+                    <option value="" disabled selected>Select Category</option>
+                    @foreach ($categoryList as $category)
+                        <option value="{{ $category->id }}">
+                            {{ $category->category_name }}
+
+
+                        </option>
+                    @endforeach
+                </select>
+                <button type="submit" value="searchCategory" name="searchCategorySubmit" class="btn btn-primary">View
+                    Category</button>
+            </form>
+
+
+
+        </div>
 
 
 
