@@ -123,18 +123,10 @@
                         <div class="ml-4 mt-2 size-container" data-color-id="{{ $variant->color_id }}"
                             style="display: none;">
                             <input type="radio" name="size_name"
-<<<<<<< HEAD
                                 value=" {{ $availableSize->size->size_name }},{{ $availableSize->price }},{{ $availableSize->stock }},{{ $availableSize->product_variant_id }}, {{$availableSize->id }},"
                                 class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" required>
 
                             {{ $availableSize->size->size_name }}
-=======
-                                value="{{ $availableSize->size->size_name }},{{ $availableSize->price }},{{ $availableSize->stock }}"
-                                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700" required>
-                            {{ $availableSize->size->size_name }}
-
-
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
                             {{ $availableSize->price }}
                             {{ $availableSize->stock }}
                             {{-- Tampilin data ini Pada tabel --}}
@@ -143,15 +135,7 @@
                             {{--      <!-- Hidden input -->
                             <input type="hidden" name="price" value="{{ $availableSize->price }}">
                             {{ $availableSize->price }}
-<<<<<<< HEAD
                             <input type="hidden" name="stock" value="{{ $availableSize->stock }}"> --}}
-=======
-<<<<<<< HEAD
-                            <input type="hidden" name="stock" value="{{ $availableSize->stock }}"> --}}
-=======
-                            <input type="hidden" name="stock" value="{{ $availableSize->stock }}">--}}
->>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
 
                             <br>
@@ -180,7 +164,6 @@
 
 
 
-<<<<<<< HEAD
 
         @if (Session::get('email') == null)
             <p> Login to Get Product </p>
@@ -193,35 +176,6 @@
 
 
 
-=======
-        <button type="submit"
-            class="bg-black text-white hover:bg-gray-700 hover:text-white rounded py-2 px-4 order-button">
-            Order
-        </button>
-
-
-        {{-- Kalo belom login bakal ada pop up --}}
-        {{--  <!-- Tombol untuk membuka modal -->
-        <button type="button"
-            class="bg-black text-white hover:bg-gray-700 hover:text-white rounded py-2 px-4 order-button"
-            onclick="openModal('modal1')">
-            Order
-        </button>
-
-        <!-- Modal Login -->
-        <div id="modal1" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-            <div class="modal-content modal-dialog modal-lg bg-white p-8 rounded border-2">
-                <h3 class="text-2xl font-semibold mb-4">Login to Continue Process</h3>
-                <!-- Konten modal lainnya -->
-                <button type="button" class="close-button bg-blue-500 text-white px-4 py-2 rounded"
-                    onclick="closeModal('modal1')">
-                    Close
-                </button>
-            </div>
-        </div>
-
-        <script src="{{ asset('js/popUp.js') }}"></script> --}}
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
 
 
@@ -245,10 +199,6 @@
             </tr>
             <tr>
                 <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</td>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
                 <td class="px-6 py-3 text-left">Tampilin data price disini pk js</td>
             </tr>
             <tr>
@@ -259,20 +209,6 @@
             <tr>
                 <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</td>
                 <td class="px-6 py-3 text-left"> - </td>
-<<<<<<< HEAD
-=======
-=======
-                <td class="px-6 py-3 text-left"></td> {{-- Tampilin data price disini --}}
-            </tr>
-            <tr>
-                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</td>
-                <td class="px-6 py-3 text-left"></td>
-            </tr>
-            <tr>
-                <td class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</td>
-                <td class="px-6 py-3 text-left"></td>
->>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
             </tr>
         </tbody>
     </table>

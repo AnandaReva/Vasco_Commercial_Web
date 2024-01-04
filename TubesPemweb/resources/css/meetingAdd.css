@@ -1,0 +1,24 @@
+/*.signature-container {
+    border: 1px solid #000;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 100px;
+}
+*/
+
+
+#add_discussion {
+    width: 200px; 
+  
+  }
+  
+/* CSS untuk kolom input discussion */
+.form-control {
+    width: 300px; 
+  }
+  
+  th {
+    font-weight: normal;
+  }
+  

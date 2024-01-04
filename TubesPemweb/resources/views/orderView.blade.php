@@ -8,11 +8,7 @@
     <title>Vasco</title>
 </head>
 
-<<<<<<< HEAD
 <body> 
-=======
-<body>
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
     <div class="w-full">
         <p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Log in here to get the latest product</p>
@@ -30,16 +26,12 @@
         }
     </script>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
     <h1>Detail Product</h1>
     <div class="border border-gray-300 p-4">
         <table class="min-w-full">
             <thead>
                 <tr>
-<<<<<<< HEAD
                     <td class="py-2 px-4 border-b"> <img class="w-20 h-20" src="{{ asset($url) }}"> </td>
                 </tr>
                 <tr>
@@ -49,14 +41,6 @@
                 <tr>
                     <td class="py-2 px-4 border-b"> Color</td>
                     <td class="py-2 px-4 border-b">{{ $selectedColorName }}</td>
-=======
-                    <td class="py-2 px-4 border-b">Product Name</td>
-                    <td class="py-2 px-4 border-b">Product 1 </td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4 border-b"> Color</td>
-                    <td class="py-2 px-4 border-b">{{ $selectedColor }}</td>
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
                 </tr>
                 <tr>
                     <td class="py-2 px-4 border-b"> Size</td>
@@ -75,7 +59,6 @@
                     <td class="py-2 px-4 border-b border-t font-bold">Rp. {{ $totalPrice }},-</td>
                 </tr>
             </thead>
-<<<<<<< HEAD
         </table>
 
 
@@ -97,9 +80,6 @@
         
 
 
-=======
-            < </table>
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 
     </div>
 

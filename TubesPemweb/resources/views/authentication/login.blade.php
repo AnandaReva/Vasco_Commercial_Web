@@ -14,7 +14,7 @@
     </h2>
 
     <div>
-        <form action="">
+       {{--  <form action="">
             <table>
                 <tr>
                     <td>
@@ -36,7 +36,7 @@
             <button type="submit">
                 login
             </button>
-        </form>
+        </form> --}}
 
         <a href="">
             <button>

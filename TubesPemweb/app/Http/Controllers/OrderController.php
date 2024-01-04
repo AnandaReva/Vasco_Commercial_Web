@@ -8,8 +8,9 @@ use App\Models\Product;
 use App\Models\Color;
 use App\Models\ProductFile;
 use App\Models\Transaction;
+use App\Models\AvailableSize;
 
-
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -67,7 +68,10 @@ class OrderController extends Controller
             'total_price' => $request->input('total_price'),
             'status' => 'pending',
             'user_id' => $request->input('user_id'),
+
         ]);
+
+        $stock = $request->input('stock');
 
         $total_price = $request->input('total_price');
 
@@ -83,13 +87,35 @@ class OrderController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
+
+
+      
+
+    /*     $updateStock = [
+            '  idAvailableSize' =>  $idAvailableSize,
+        ]; */
+        
+
         $params = array(
             'transaction_details' => array(
                 'order_id' => rand(),
-                'gross_amount' =>intval($total_price), // no decimal allowed for creditcard
+                'gross_amount' => intval($total_price), // no decimal allowed for creditcard
             )
         );
-        
+
+        /* $params = [
+            'transaction_details' => [
+                'order_id' => rand(),
+                'gross_amount' => intval($total_price), // no decimal allowed for credit card
+            ],
+            // Menambahkan informasi stok yang telah diupdate
+            'item_details' => [
+                [
+                    'idAvailableSize' => $idAvailableSize,
+                ],
+            ],
+        ];
+ */
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
 
@@ -111,5 +137,28 @@ class OrderController extends Controller
 
         // Pass the transaction details to the view
         return view('confirmView', compact('transaction'));
+    }
+
+
+    public function updateData($transactionId)
+    {
+        // Fetch the transaction details from the database based on the provided ID
+        $transaction = Transaction::findOrFail($transactionId);
+
+        Transaction::where('id', $transaction->id)->update([
+            'status' => 'success',
+        ]);
+    
+       /*  $stockAwal = AvailableSize::findOrFail($transaction->available_size_id); */
+    
+        // Disable timestamps for this update
+        AvailableSize::where('id', $transaction->available_size_id)->update([
+            'stock' => DB::raw('stock - ' . $transaction->qty),
+        ]);
+    
+        // Pass the transaction details to the view
+        /* dd($stockAwal); */
+    
+        return redirect()->route('landing')->with('success', ' Thank You For Shopping With Us');
     }
 }

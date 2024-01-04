@@ -87,30 +87,51 @@ class AdminController extends Controller
         $categoryList = Category::get(['id', 'category_name']);
         $colors = Color::all();
         $sizes = Size::all();
-       /*  dd($categoryList); */
+        /*  dd($categoryList); */
         return view('adminView/addProductAdmin', compact('categoryList', 'colors', 'sizes'));
     }
 
     public function storeProductAdmin(Request $request)
     {
-        $request->validate([
-            'product_name' => 'required',
-            'description' => 'required',
-            'category_id' => 'required',
-            'color_id' => 'required',
-            'size_id' => 'required',
-            'price' => 'required',
-            'stock' => 'required',
-            'product_image' => 'required',
-        ]);
-
         dd($request->all());
+
+
+        foreach ($request->color as $key => $color) {
+            // $color contains the selected color for each discussion
+            // Access other discussion details using $request->size[$key], $request->price[$key], etc.
+        
+            // Dump discussion data
+            dd([
+                'color' => $color,
+                'size' => $request->size[$key],
+                // Add other discussion details here
+            ]);
+        
+            foreach ($request->size[$key] as $index => $size) {
+                // Access action details for each discussion
+                $price = $request->price[$key][$index];
+                $stock = $request->stock[$key][$index];
+                $dateAdded = $request->dateAdded[$key][$index];
+        
+                // Dump action data
+                dd([
+                    'size' => $size,
+                    'price' => $price,
+                    'stock' => $stock,
+                    'dateAdded' => $dateAdded,
+                    // Add other action details here
+                ]);
+        
+                // Process action data as needed
+            }
+        }
         
 
 
 
 
-     /*    $product = Product::create([
+
+        /*    $product = Product::create([
             'product_name' => $request->product_name,
             'description' => $request->description,
             'category_id' => $request->category_id,

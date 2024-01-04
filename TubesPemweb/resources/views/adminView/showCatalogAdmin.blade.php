@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
-=======
-<<<<<<< HEAD
-<!DOCTYPE html>
-=======
-div<!DOCTYPE html>
->>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
->>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
 <html lang="en">
 
 <head>
