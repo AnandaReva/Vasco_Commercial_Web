@@ -3,7 +3,19 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jan 07, 2024 at 03:10 PM
+=======
+<<<<<<< HEAD
+-- Generation Time: Dec 31, 2023 at 07:43 AM
+=======
+<<<<<<< HEAD
+-- Generation Time: Dec 30, 2023 at 08:43 AM
+=======
+-- Generation Time: Dec 23, 2023 at 08:42 AM
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,15 +44,20 @@ CREATE TABLE `available_sizes` (
   `product_variant_id` bigint(20) UNSIGNED DEFAULT NULL,
   `size_id` bigint(20) UNSIGNED DEFAULT NULL,
   `price` double(8,2) NOT NULL,
+<<<<<<< HEAD
   `stock` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
+=======
+  `stock` bigint(20) UNSIGNED NOT NULL
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `available_sizes`
 --
 
+<<<<<<< HEAD
 INSERT INTO `available_sizes` (`id`, `product_variant_id`, `size_id`, `price`, `stock`, `created_at`, `updated_at`) VALUES
 (7, 1, 1, 257000.00, 318, NULL, NULL),
 (8, 1, 2, 255000.00, 331, NULL, '2024-01-07 06:58:00'),
@@ -59,6 +76,23 @@ INSERT INTO `available_sizes` (`id`, `product_variant_id`, `size_id`, `price`, `
 (43, 32, 2, 200000.00, 32, '2024-01-07 04:09:20', '2024-01-07 04:09:20'),
 (44, 32, 3, 240000.00, 23, '2024-01-07 04:09:20', '2024-01-07 04:09:20'),
 (45, 33, 2, 300000.00, 34, '2024-01-07 04:09:20', '2024-01-07 04:09:20');
+=======
+INSERT INTO `available_sizes` (`id`, `product_variant_id`, `size_id`, `price`, `stock`) VALUES
+(7, 1, 1, 257000.00, 318),
+(8, 1, 2, 255000.00, 337),
+(9, 1, 3, 250000.00, 42),
+(10, 1, 4, 250000.00, 205),
+(11, 2, 2, 300000.00, 214),
+(12, 2, 3, 290000.00, 108),
+(13, 4, 1, 375000.00, 226),
+(14, 4, 2, 360000.00, 122),
+(15, 4, 3, 360000.00, 258),
+(16, 4, 4, 350000.00, 239),
+(17, 5, 1, 375000.00, 76),
+(18, 5, 2, 360000.00, 328),
+(19, 5, 3, 360000.00, 49),
+(20, 5, 4, 350000.00, 268);
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 -- --------------------------------------------------------
 
@@ -115,6 +149,41 @@ INSERT INTO `colors` (`id`, `color_name`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `customer_name`, `address`, `email`, `phone`, `created_at`, `updated_at`) VALUES
+(1, 'Dalima Halimah', 'Ki. Adisumarmo No. 368, Administrasi Jakarta Utara 96425, NTT', 'vlaksita@example.net', '0817 2881 938', '2023-12-10 00:57:56', '2023-12-10 00:57:56'),
+(2, 'Mulyono Hakim', 'Ds. Sutarjo No. 153, Administrasi Jakarta Barat 10792, Kaltara', 'lsalahudin@example.net', '0895 9344 8406', '2023-12-10 00:57:56', '2023-12-10 00:57:56'),
+(3, 'Purwa Firgantoro', 'Ds. Tambun No. 272, Sawahlunto 48719, NTB', 'rini44@example.com', '(+62) 892 678 106', '2023-12-10 00:57:56', '2023-12-10 00:57:56'),
+(4, 'Olivia Rahmawati S.IP', 'Ds. Hasanuddin No. 150, Palopo 78526, Jatim', 'vicky96@example.org', '(+62) 898 2758 686', '2023-12-10 00:57:56', '2023-12-10 00:57:56'),
+(5, 'Michelle Permata M.Pd', 'Ds. Adisucipto No. 69, Jayapura 63044, Maluku', 'ayu.maheswara@example.org', '0453 6599 716', '2023-12-10 00:57:56', '2023-12-10 00:57:56'),
+(6, 'Warsa Edward Manullang', 'Ki. Pahlawan No. 996, Sawahlunto 96217, Kalteng', 'daniswara46@example.com', '(+62) 760 3918 5805', '2023-12-10 00:57:56', '2023-12-10 00:57:56'),
+(7, 'Daniswara Marbun S.H.', 'Ds. M.T. Haryono No. 908, Medan 42461, Kaltara', 'artanto47@example.org', '(+62) 696 8933 042', '2023-12-10 00:57:56', '2023-12-10 00:57:56'),
+(8, 'Lega Wasita S.Kom', 'Ki. Dewi Sartika No. 194, Banjarbaru 15226, Pabar', 'victoria.wijayanti@example.net', '0710 3980 205', '2023-12-10 00:57:56', '2023-12-10 00:57:56'),
+(9, 'Icha Yuliarti', 'Jln. Sampangan No. 755, Tanjung Pinang 21345, Kaltim', 'budiman.cengkal@example.net', '(+62) 731 5958 986', '2023-12-10 00:57:56', '2023-12-10 00:57:56'),
+(10, 'Wira Mahesa Uwais S.I.Kom', 'Ds. Kartini No. 333, Palangka Raya 18001, Sumbar', 'margana99@example.net', '(+62) 204 5613 980', '2023-12-10 00:57:56', '2023-12-10 00:57:56');
+
+-- --------------------------------------------------------
+
+--
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Table structure for table `deliveries`
 --
 
@@ -171,12 +240,58 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2023_12_05_061530_order_details_table', 2),
 (12, '2023_12_05_061932_payments_table', 2),
 (13, '2023_12_05_062750_deliveries_table', 2),
+<<<<<<< HEAD
 (14, '2023_12_10_080323_create_product_files_table', 3),
 (15, '2023_12_30_053952_create_transactions_table', 4),
 (17, '2023_12_31_051226_add_columns_to_transactions_table', 5),
 (18, '2024_01_01_140653_add_timestamps_to_table', 6),
 (19, '2024_01_06_070713_add_delivery_id_to_transactions_table', 7),
 (20, '2024_01_06_082914_add_timestamps_to_product_variants_table', 8);
+=======
+<<<<<<< HEAD
+(14, '2023_12_10_080323_create_product_files_table', 3),
+(15, '2023_12_30_053952_create_transactions_table', 4),
+(17, '2023_12_31_051226_add_columns_to_transactions_table', 5);
+=======
+<<<<<<< HEAD
+(14, '2023_12_10_080323_create_product_files_table', 3),
+(15, '2023_12_30_053952_create_transactions_table', 4);
+=======
+(14, '2023_12_10_080323_create_product_files_table', 3);
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `due` date DEFAULT NULL,
+  `status` enum('pending','processing','completed','cancelled') NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` bigint(20) UNSIGNED NOT NULL,
+  `total_amount` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 -- --------------------------------------------------------
 
@@ -193,6 +308,25 @@ CREATE TABLE `password_reset_tokens` (
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `payment_method` bigint(20) UNSIGNED NOT NULL,
+  `payment_total` bigint(20) UNSIGNED NOT NULL,
+  `due` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Table structure for table `personal_access_tokens`
 --
 
@@ -246,9 +380,13 @@ INSERT INTO `products` (`id`, `category_id`, `product_name`, `description`, `cre
 (39, 6, 'Quilted Puffer Jacket', 'Brave the cold in style with the Quilted Puffer Jacket. Featuring a sleek design and insulating fill, this jacket provides both warmth and a contemporary look for winter adventures.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
 (40, 6, 'Waterproof Shell Parka', 'Face the elements with confidence in the Waterproof Shell Parka. Designed for rainy days, it offers protection without sacrificing style. The adjustable hood and functional details make it a practical choice for unpredictable weather.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
 (41, 5, 'Cozy Knit Pullover:', 'Wrap yourself in warmth with this Cozy Knit Pullover. The soft and chunky knit provides comfort, while the relaxed fit and subtle details make it a stylish choice for chilly days.', '2023-08-27 13:35:25', '2023-08-27 13:35:25'),
+<<<<<<< HEAD
 (42, 5, 'Striped Crewneck Sweater', 'Add a touch of classic charm with the Striped Crewneck Sweater. The timeless striped pattern and lightweight knit make it a versatile option for layering. Perfect for a casual day at the office or a weekend brunch.', '2023-08-27 13:36:16', '2023-08-27 13:36:16'),
 (50, 1, 'coba3', 'desc3', '2024-01-06 20:01:36', '2024-01-06 20:01:36'),
 (51, 1, 'coba4', 'desc4', '2024-01-07 05:30:50', '2024-01-07 05:30:50');
+=======
+(42, 5, 'Striped Crewneck Sweater', 'Add a touch of classic charm with the Striped Crewneck Sweater. The timeless striped pattern and lightweight knit make it a versatile option for layering. Perfect for a casual day at the office or a weekend brunch.', '2023-08-27 13:36:16', '2023-08-27 13:36:16');
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 -- --------------------------------------------------------
 
@@ -278,10 +416,14 @@ INSERT INTO `product_files` (`id`, `product_variant_id`, `file_name`, `url`, `cr
 (8, 8, 'Everyday Elegance Blouse-9', 'product_resources/Shirts/Everyday Elegance Blouse-9.png', '2023-12-20 14:02:43', '2023-12-20 14:02:43'),
 (9, 10, 'Weekend Casual Polo-2', 'product_resources/Shirts/Weekend Casual Polo-2.jpg', '2023-12-20 14:04:24', '2023-12-20 14:04:24'),
 (10, 11, 'Weekend Casual Polo-3', 'product_resources/Shirts/Weekend Casual Polo-3.png', '2023-12-20 14:04:24', '2023-12-20 14:04:24'),
+<<<<<<< HEAD
 (11, 12, 'SmartFit Dress Shirt-6', 'product_resources/Shirts/SmartFit Dress Shirt-6.jpg', '2023-12-20 14:08:20', '2023-12-20 14:08:20'),
 (12, 35, 'data_processed.png', 'product_resources/Shirts/data_processed.png', '2024-01-07 05:58:46', '2024-01-07 05:58:46'),
 (13, 36, 'dataAPI_padaBlade_dariController.png', 'product_resources/Shirts/dataAPI_padaBlade_dariController.png', '2024-01-07 05:58:46', '2024-01-07 05:58:46'),
 (14, 37, 'HTTP_data.png', 'product_resources/Shirts/HTTP_data.png', '2024-01-07 05:58:46', '2024-01-07 05:58:46');
+=======
+(11, 12, 'SmartFit Dress Shirt-6', 'product_resources/Shirts/SmartFit Dress Shirt-6.jpg', '2023-12-20 14:08:20', '2023-12-20 14:08:20');
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 -- --------------------------------------------------------
 
@@ -292,15 +434,20 @@ INSERT INTO `product_files` (`id`, `product_variant_id`, `file_name`, `url`, `cr
 CREATE TABLE `product_variants` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
+<<<<<<< HEAD
   `color_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
+=======
+  `color_id` bigint(20) UNSIGNED NOT NULL
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_variants`
 --
 
+<<<<<<< HEAD
 INSERT INTO `product_variants` (`id`, `product_id`, `color_id`, `created_at`, `updated_at`) VALUES
 (1, 25, 5, NULL, NULL),
 (2, 25, 7, NULL, NULL),
@@ -316,6 +463,18 @@ INSERT INTO `product_variants` (`id`, `product_id`, `color_id`, `created_at`, `u
 (35, 51, 1, '2024-01-07 05:58:46', '2024-01-07 05:58:46'),
 (36, 51, 2, '2024-01-07 05:58:46', '2024-01-07 05:58:46'),
 (37, 51, 3, '2024-01-07 05:58:46', '2024-01-07 05:58:46');
+=======
+INSERT INTO `product_variants` (`id`, `product_id`, `color_id`) VALUES
+(1, 25, 5),
+(2, 25, 7),
+(4, 26, 8),
+(5, 26, 10),
+(7, 27, 3),
+(8, 27, 9),
+(10, 28, 2),
+(11, 28, 3),
+(12, 29, 6);
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 -- --------------------------------------------------------
 
@@ -343,12 +502,23 @@ INSERT INTO `sizes` (`id`, `size_name`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Table structure for table `transactions`
 --
 
 CREATE TABLE `transactions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
   `total_price` decimal(10,2) NOT NULL,
   `status` enum('pending','success','failed') NOT NULL DEFAULT 'pending',
   `snap_token` varchar(255) DEFAULT NULL,
@@ -357,14 +527,19 @@ CREATE TABLE `transactions` (
   `qty` bigint(20) UNSIGNED DEFAULT NULL,
   `product_id` bigint(20) UNSIGNED DEFAULT NULL,
   `product_variant_id` bigint(20) UNSIGNED DEFAULT NULL,
+<<<<<<< HEAD
   `available_size_id` bigint(20) UNSIGNED DEFAULT NULL,
   `delivery_id` bigint(20) UNSIGNED DEFAULT NULL
+=======
+  `available_size_id` bigint(20) UNSIGNED DEFAULT NULL
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transactions`
 --
 
+<<<<<<< HEAD
 INSERT INTO `transactions` (`id`, `user_id`, `total_price`, `status`, `snap_token`, `created_at`, `updated_at`, `qty`, `product_id`, `product_variant_id`, `available_size_id`, `delivery_id`) VALUES
 (32, 1, 750000.00, 'success', '02ec81cf-0b50-474d-b848-81665e6235e7', '2024-01-03 04:01:39', '2024-01-03 04:02:23', 3, NULL, 1, 9, NULL),
 (33, 2, 290000.00, 'success', '7d4aca39-f84f-4e74-9b0a-df14dea3c08a', '2024-01-03 18:23:03', '2024-01-03 18:26:13', 1, NULL, 2, 12, NULL),
@@ -373,10 +548,31 @@ INSERT INTO `transactions` (`id`, `user_id`, `total_price`, `status`, `snap_toke
 (36, 1, 1275000.00, 'success', '515bbe5f-eb2d-410a-9daa-aac74e39c9a0', '2024-01-07 06:48:04', '2024-01-07 06:50:40', 5, NULL, 1, 8, NULL),
 (37, 1, 255000.00, 'success', 'b9653e14-c589-4c77-9a84-f9c0b09f1bca', '2024-01-07 06:57:18', '2024-01-07 06:58:00', 1, NULL, 1, 8, NULL),
 (38, 1, 300000.00, 'success', 'acad17bb-a6b4-4fdb-baa0-79be7bddee85', '2024-01-07 07:00:31', '2024-01-07 07:06:35', 1, 25, 2, 11, NULL);
+=======
+INSERT INTO `transactions` (`id`, `user_id`, `total_price`, `status`, `snap_token`, `created_at`, `updated_at`, `qty`, `product_id`, `product_variant_id`, `available_size_id`) VALUES
+(25, 1, 514000.00, 'pending', '831eda84-46fa-45be-a056-424462c35979', '2023-12-30 23:16:50', '2023-12-30 23:16:50', 2, NULL, 1, 7);
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+=======
+  `price` decimal(10,2) NOT NULL,
+  `status` enum('pending','success','failed') NOT NULL DEFAULT 'pending',
+  `snap_token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Table structure for table `users`
 --
 
@@ -392,15 +588,27 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Nama Depan Nama Belakang', 'namadepannamabelakang1781945@gmail.com', NULL, '$2y$12$0nOArwkMaWMAZkA2Jdo17.pjpp79kc8J6CbwdEsCtuwdQpxgj7vHK', NULL, '2023-12-30 03:48:10', '2023-12-30 03:48:10'),
+<<<<<<< HEAD
 (2, 'Reva Ananda', 'aarevaananda@gmail.com', NULL, '$2y$12$LbbaTYBCnLOBd0o.BL8l.OCYCre7c9XHLX.97S6A/ytgAxVjJXczu', NULL, '2023-12-30 21:31:38', '2023-12-30 21:31:38'),
 (3, 'admin', 'admin@gmail.com', NULL, 'admin123', NULL, NULL, NULL);
 
 --
+=======
+(2, 'Reva Ananda', 'aarevaananda@gmail.com', NULL, '$2y$12$LbbaTYBCnLOBd0o.BL8l.OCYCre7c9XHLX.97S6A/ytgAxVjJXczu', NULL, '2023-12-30 21:31:38', '2023-12-30 21:31:38');
+
+--
+=======
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Indexes for dumped tables
 --
 
@@ -425,6 +633,16 @@ ALTER TABLE `colors`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
+=======
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `customers_customer_name_unique` (`customer_name`);
+
+--
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Indexes for table `deliveries`
 --
 ALTER TABLE `deliveries`
@@ -445,12 +663,40 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
+=======
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `orders_customer_id_foreign` (`customer_id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_details_order_id_foreign` (`order_id`),
+  ADD KEY `order_details_product_id_foreign` (`product_id`);
+
+--
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
+<<<<<<< HEAD
+=======
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payments_order_id_foreign` (`order_id`);
+
+--
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -487,10 +733,18 @@ ALTER TABLE `sizes`
   ADD PRIMARY KEY (`id`);
 
 --
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
+<<<<<<< HEAD
   ADD KEY `transactions_user_id_foreign` (`user_id`),
   ADD KEY `transactions_product_id_foreign` (`product_id`),
   ADD KEY `transactions_variant_id_foreign` (`product_variant_id`),
@@ -498,6 +752,22 @@ ALTER TABLE `transactions`
   ADD KEY `transactions_delivery_id_foreign` (`delivery_id`);
 
 --
+=======
+<<<<<<< HEAD
+  ADD KEY `transactions_user_id_foreign` (`user_id`),
+  ADD KEY `transactions_product_id_foreign` (`product_id`),
+  ADD KEY `transactions_variant_id_foreign` (`product_variant_id`),
+  ADD KEY `transactions_availablesize_id_foreign` (`available_size_id`);
+
+--
+=======
+  ADD KEY `transactions_user_id_foreign` (`user_id`);
+
+--
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -512,7 +782,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `available_sizes`
 --
 ALTER TABLE `available_sizes`
+<<<<<<< HEAD
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+=======
+<<<<<<< HEAD
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+=======
+<<<<<<< HEAD
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+=======
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -527,6 +809,15 @@ ALTER TABLE `colors`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+<<<<<<< HEAD
+=======
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- AUTO_INCREMENT for table `deliveries`
 --
 ALTER TABLE `deliveries`
@@ -542,7 +833,37 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
+<<<<<<< HEAD
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+=======
+<<<<<<< HEAD
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+=======
+<<<<<<< HEAD
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+=======
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -554,19 +875,31 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
+<<<<<<< HEAD
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+=======
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 --
 -- AUTO_INCREMENT for table `product_files`
 --
 ALTER TABLE `product_files`
+<<<<<<< HEAD
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+=======
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 --
 -- AUTO_INCREMENT for table `product_variants`
 --
 ALTER TABLE `product_variants`
+<<<<<<< HEAD
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+=======
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 --
 -- AUTO_INCREMENT for table `sizes`
@@ -575,16 +908,43 @@ ALTER TABLE `sizes`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+=======
+<<<<<<< HEAD
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+<<<<<<< HEAD
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+=======
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+=======
+<<<<<<< HEAD
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 --
 -- Constraints for dumped tables
@@ -598,6 +958,34 @@ ALTER TABLE `available_sizes`
   ADD CONSTRAINT `available_size` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+<<<<<<< HEAD
+=======
+-- Constraints for table `deliveries`
+--
+ALTER TABLE `deliveries`
+  ADD CONSTRAINT `deliveries_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD CONSTRAINT `order_details_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `order_details_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payments`
+--
+ALTER TABLE `payments`
+  ADD CONSTRAINT `payments_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
@@ -615,16 +1003,36 @@ ALTER TABLE `product_files`
 ALTER TABLE `product_variants`
   ADD CONSTRAINT `product_variants_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `product_variants_ibfk_2` FOREIGN KEY (`color_id`) REFERENCES `colors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 
 --
 -- Constraints for table `transactions`
 --
 ALTER TABLE `transactions`
+<<<<<<< HEAD
   ADD CONSTRAINT `transactions_availablesize_id_foreign` FOREIGN KEY (`available_size_id`) REFERENCES `available_sizes` (`id`),
   ADD CONSTRAINT `transactions_delivery_id_foreign` FOREIGN KEY (`delivery_id`) REFERENCES `deliveries` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `transactions_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `transactions_variant_id_foreign` FOREIGN KEY (`product_variant_id`) REFERENCES `product_variants` (`id`);
+=======
+<<<<<<< HEAD
+  ADD CONSTRAINT `transactions_availablesize_id_foreign` FOREIGN KEY (`available_size_id`) REFERENCES `available_sizes` (`id`),
+  ADD CONSTRAINT `transactions_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `transactions_variant_id_foreign` FOREIGN KEY (`product_variant_id`) REFERENCES `product_variants` (`id`);
+=======
+  ADD CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+=======
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+>>>>>>> a75124e184b29282d60b66ca55307d7685600fbd
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

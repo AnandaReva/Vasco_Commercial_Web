@@ -1,0 +1,104 @@
+<?php
+
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AdminController;
+<<<<<<< HEAD
+use App\Http\Controllers\OrderController;
+=======
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+
+
+Route::get('/vasco.com/home', function () {
+    return view('loginView');
+});
+
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+
+Route::get('/vasco.com/login', [AuthController::class, 'login'])->name('login');
+Route::post('/vasco.com/login', [AuthController::class, 'authenticating']);
+Route::get('/vasco.com/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/vasco.com/register', [AuthController::class, 'register'])->name('register');
+Route::post('/vasco.com/register', [AuthController::class, 'register'])->name('submitRegister');
+<<<<<<< HEAD
+=======
+=======
+Route::get('/vasco.com/login', [AuthController::class, 'login'])->name('login');
+Route::post('/vasco.com/login', [AuthController::class, 'authenticating']);
+Route::get('/vasco.com/logout', [AuthController::class, 'logout']);
+
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+
+
+//Admin
+Route::get('/vasco.com/admin/catalog', [AdminController::class, 'showCatalogAdmin'])->name('catalogAdmin.show');
+Route::get('/vasco.com/admin/product/{idProduct}', [AdminController::class, 'detailProductAdmin'])->name('productAdmin.show');
+
+Route::get('/vasco.com/admin/insertProduct', [AdminController::class, 'insertProductAdmin'])->name('productAdmin.insert');
+/* Route::get('/vasco.com/admin/product/insert', [AdminController::class, 'insertProductAdmin'])->name('productAdmin.insert');
+Route::post('/vasco.com/admin/product/store', [AdminController::class, 'storeProductAdmin'])->name('productAdmin.store'); */
+
+/* 
+Route::get('/vasco.com/admin/product/{idProduct}/edit', [AdminController::class, 'editProductAdmin'])->name('productAdmin.edit');
+Route::post('/vasco.com/admin/product/{idProduct}/edit', [AdminController::class, 'updateProductAdmin'])->name('productAdmin.update');
+Route::get('/vasco.com/admin/product/{idProduct}/delete', [AdminController::class, 'deleteProductAdmin'])->name('productAdmin.delete');
+Route::get('/vasco.com/admin/product/{idProduct}/destroy', [AdminController::class, 'destroyProductAdmin'])->name('productAdmin.destroy'); */
+
+
+
+
+//Customer
+
+
+<<<<<<< HEAD
+Route::get('vasco.com', [CustomerController::class, 'landing'])->name('landing');
+
+Route::get('/vasco.com/catalog', [CustomerController::class, 'showCatalog'])->name('catalog.show');
+Route::get('/vasco.com/latest', [CustomerController::class, 'showNewArrival'])->name('newArrivalView.show');
+Route::get('/vasco.com/category/{idCategory}', [CustomerController::class, 'showProductsPerCategory'])->name('category.show');
+Route::get('/vasco.com/product/{idProduct}', [CustomerController::class, 'showProduct'])->name('product.show');
+
+
+
+Route::post('/vasco.com/product/{idProduct}/order', [OrderController::class, 'order'])->name('product.order');
+Route::post('/vasco.com/product/{idProduct}/{idVariant}/{idAvailableSize}/process', [OrderController::class, 'process'])->name('order.process');
+Route::get('/vasco.com/process/{idTransaction}', [OrderController::class, 'confirm'])->name('order.confirm');
+=======
+<<<<<<< HEAD
+Route::get('vasco.com', [CustomerController::class, 'landing'])->name('landing');
+=======
+Route::get('/vasco.com', [CustomerController::class, 'landing'])->name('landing');
+>>>>>>> bedb74b8ba937a3829e593c73c75a870ef0125ba
+
+Route::get('/vasco.com/catalog', [CustomerController::class, 'showCatalog'])->name('catalog.show');
+Route::get('/vasco.com/latest', [CustomerController::class, 'showNewArrival'])->name('newArrivalView.show');
+
+Route::get('/vasco.com/category/{idCategory}', [CustomerController::class, 'showProductsPerCategory'])->name('category.show');
+
+Route::get('/vasco.com/product/{idProduct}', [CustomerController::class, 'showProduct'])->name('product.show');
+
+Route::post('/vasco.com/product/{idProduct}/order', [CustomerController::class, 'order'])->name('product.order');
+
+>>>>>>> 0e5a13e9456957d352780118a2d08b903bb2fbf7
+
+
+
