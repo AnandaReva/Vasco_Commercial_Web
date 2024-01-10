@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39886dc40a785b96e47c4ad28d88107c",
+    "content-hash": "a9b24705f7d2b7fe3d658ebc0adc7f56",
     "packages": [
         {
             "name": "beste/clock",
@@ -1469,6 +1469,53 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "irfa/raja-ongkir",
+            "version": "v1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/irfaardy/raja-ongkir.git",
+                "reference": "ed54afd0d711a4289ff5257cd5595ca2bc0d8466"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/irfaardy/raja-ongkir/zipball/ed54afd0d711a4289ff5257cd5595ca2bc0d8466",
+                "reference": "ed54afd0d711a4289ff5257cd5595ca2bc0d8466",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Irfa\\RajaOngkir\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Irfa A",
+                    "email": "irfa.backend@protonmail.com"
+                }
+            ],
+            "description": "\"Laravel Raja Ongkir Package\"",
+            "keywords": [
+                "cek ongkir",
+                "laravel",
+                "ongkir",
+                "php",
+                "raja ongkir"
+            ],
+            "support": {
+                "issues": "https://github.com/irfaardy/raja-ongkir/issues",
+                "source": "https://github.com/irfaardy/raja-ongkir/tree/master"
+            },
+            "time": "2020-07-24T12:10:21+00:00"
         },
         {
             "name": "kreait/firebase-php",
@@ -9446,5 +9493,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

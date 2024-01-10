@@ -13,6 +13,7 @@ class Transaction extends Model
     public $incrementing = true;
     protected $keyType = 'integer';
     protected $fillable = [
+        'product_id',
         'user_id',
         'product_variant_id',
         'qty',
@@ -36,4 +37,12 @@ class Transaction extends Model
     {
         return $this->belongsToMany(AvailableSize::class, 'availableSize_id', 'id');
     }
+
+    public function deliveryTransaction()
+    {
+        return $this->belongsTo(Delivery::class, 'delivery_id', 'id');
+    }
+
+
+
 }

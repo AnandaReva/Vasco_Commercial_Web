@@ -8,6 +8,9 @@ use App\Models\ProductVariant;
 use App\Models\Color;
 use App\Models\Category;
 use App\Models\Size;
+use App\Models\ProductFile;
+use App\Models\AvailableSize;
+use GuzzleHttp\Psr7\Message;
 
 class AdminController extends Controller
 {
@@ -85,57 +88,165 @@ class AdminController extends Controller
     public function insertProductAdmin()
     {
         $categoryList = Category::get(['id', 'category_name']);
-        $colors = Color::all();
-        $sizes = Size::all();
-        /*  dd($categoryList); */
-        return view('adminView/addProductAdmin', compact('categoryList', 'colors', 'sizes'));
+        /*     $colors = Color::all();
+        $sizes = Size::all(); */
+
+        return view('adminView/addProductAdmin', compact('categoryList'));
     }
 
     public function storeProductAdmin(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
 
 
-        foreach ($request->color as $key => $color) {
-            // $color contains the selected color for each discussion
-            // Access other discussion details using $request->size[$key], $request->price[$key], etc.
-        
-            // Dump discussion data
-            dd([
-                'color' => $color,
-                'size' => $request->size[$key],
-                // Add other discussion details here
+        $category = $request->input('categoriesOption');
+        $productName = $request->input('productName');
+        $description = $request->input('description');
+
+        //  dd($categories, $productName, $description);
+
+
+        $product = Product::create([
+            'category_id' => $category,
+            'product_name' => $productName,
+            'description' => $description,
+        ]);
+
+
+        return  redirect()->route('variantAdmin.insert', ['idProduct' => $product->id])->with('success', 'Product Has been Added');
+    }
+
+
+    public function insertVariantAdmin($idProduct)
+    {
+        // dd($idProduct);
+        $categoryName = Category::whereHas('categoryProducts', function ($query) use ($idProduct) {
+            $query->where('id', $idProduct);
+        })->value('category_name');
+
+        //  dd($categoryName);
+        $product = Product::where('id', $idProduct)->first();
+
+        $colors = Color::all();
+
+        return view('adminView/addVariantAdmin', compact('product', 'colors', 'categoryName'));
+    }
+
+    public function storeVariantAdmin(Request $request, $idProduct)
+    {
+
+
+
+        //  dd($idProduct, $request->input('colorOption'));
+
+        $categoryName = $request->input('categoryName');
+        $colors = $request->input('colorOption');
+        $files = $request->file('file');
+
+
+        //  dd($request->all());
+
+
+        $variantIds = []; // kumpulin id variant jadi 1
+
+        $colors = $request->input('colorOption');
+
+        foreach ($colors as $index => $color) {
+            $productVariant = ProductVariant::create([
+                'product_id' => $idProduct,
+                'color_id' => $color,
             ]);
         
-            foreach ($request->size[$key] as $index => $size) {
-                // Access action details for each discussion
-                $price = $request->price[$key][$index];
-                $stock = $request->stock[$key][$index];
-                $dateAdded = $request->dateAdded[$key][$index];
+            // Storing the file in the 'public/product_resources' directory
+            $file = $files[$index];
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('product_resources/' . $categoryName), $fileName);
+         
         
-                // Dump action data
-                dd([
-                    'size' => $size,
-                    'price' => $price,
-                    'stock' => $stock,
-                    'dateAdded' => $dateAdded,
-                    // Add other action details here
+            // Creating a new ProductFile entry with the file URL and variant ID
+            ProductFile::create([
+                'product_variant_id' => $productVariant->id,
+                'file_name' => $fileName,
+                'url' => 'product_resources/' . $categoryName . '/' . $fileName,
+                'color_id' => $color,
+            ]);
+        }
+
+//dd($variantIds, $files);
+
+        $idVariants = implode(',', $variantIds);
+        //dd($idVariants);
+
+        // Mengirimkan array ID variant ke rute atau tempat yang diperlukan
+        return redirect()->route('availableSizeAdmin.insert', ['idProduct' => $idProduct, 'idVariants' => $idVariants])->with('success', 'Variants have been added to the product');
+    }
+
+
+
+    public function insertAvailableSizeAdmin($idProduct, $idVariants)
+
+    {
+
+        $idVariants = explode(',', $idVariants);
+
+
+
+        /*   $product_variants = ProductVariant::whereIn('id', $idVariants)->get();
+        dd($product_variants); */
+
+        $sizes = Size::all();
+
+        return view('adminView/addAvailableSizeAdmin', compact('idProduct', 'idVariants', 'sizes'));
+    }
+
+
+    public function storeAvailableSizeAdmin(Request $request, $idProduct, $idVariants)
+
+    {
+
+
+
+        $requestData = $request->all();
+
+        // Extracting data from the request
+        $prices = $requestData['price'];
+        $stocks = $requestData['stock'];
+        $sizeOptions = $requestData['sizeOption'];
+
+
+        // dd($sizeOptions, $stocks, $prices);
+
+        // Loop through each variant ID
+        foreach ($prices as $variantId => $variantPrices) {
+            foreach ($variantPrices as $index => $price) {
+                // Retrieve corresponding stock and sizeOption values
+                $stock = $stocks[$variantId][$index];
+                $sizeOption = $sizeOptions[$variantId][$index];
+
+                // Cast values to integer
+                $price = (int)$price;
+                $stock = (int)$stock;
+                $sizeOption = (int)$sizeOption;
+
+
+
+                // dd($stock, $sizeOption, $price);
+
+                AvailableSize::create([
+                    'product_variant_id' =>  $variantId,
+                    'size_id' =>  $sizeOption,
+                    'price' =>  $price,
+                    'stock' =>  $stock,
+
                 ]);
-        
-                // Process action data as needed
             }
         }
-        
 
 
 
+        // dd($sizeOptions, $stocks, $prices);
 
 
-        /*    $product = Product::create([
-            'product_name' => $request->product_name,
-            'description' => $request->description,
-            'category_id' => $request->category_id,
-        ]); */
-        return view('adminView/adminProductInsert', compact('categoryList'));
+        return redirect()->route('productAdmin.show', ['idProduct' => $idProduct])->with('success', 'Available Sizes have been added to the product variants');
     }
 }

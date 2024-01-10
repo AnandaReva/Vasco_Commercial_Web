@@ -136,7 +136,14 @@ class CustomerController extends Controller
 
     public function showProduct($idProduct)
     {
-
+        $productColors = [
+            "black"   => "#000000",
+            "white"   => "#ffffff",
+            "grey"    => "#fdfdfd",
+            "red"     => "#990000",
+            "blue"    => "#1520A6",
+            "purple"  => "#570861",
+        ];
 
         $product = Product::join('categories', 'products.category_id', '=', 'categories.id')
             ->select('products.*', 'categories.category_name')

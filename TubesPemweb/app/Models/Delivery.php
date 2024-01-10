@@ -15,14 +15,21 @@ class Delivery extends Model
     protected $keyType = 'integer';
     protected $fillable = [
 
-        'order_id',
-        'delivery_method',
+        'cost',
+        'city',
         'delivery_address',
+        'provider',
+        'service',
+        'etd',
+        'recipient',
+        'address',
+        'weight',
 
     ];
 
-    public function deliveryOrders()
+
+    public function deliveryTransaction()
     {
-        return $this->belongsTo(Order::class,  'id', 'order_id');
+        return $this->hasOne(Transaction::class,  'id', 'delivery_id');
     }
 }

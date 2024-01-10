@@ -16,6 +16,9 @@ class AvailableSize extends Model
     protected $fillable = [
         'product_variant_id',
         'size_id',
+        'price',
+        'stock',
+        'weight',
     ];
 
     // AvailableSize.php

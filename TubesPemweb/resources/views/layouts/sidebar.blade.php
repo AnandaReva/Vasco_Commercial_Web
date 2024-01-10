@@ -1,50 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <!--icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <title>Vasco's goods</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
-
 <body>
-    <div class="w-full">
-        @if (session('status') == 'berhasil')
-            <div class="alert alert-success text-center" role="alert">
-                <h4>{{ session('message') }}</h4>
-            </div>
-        @endif
-
-        @if (Session::get('email') != null)
-            <p class="w-full text-center py-2 bg-gray-900 text-white">
-                <span class="flex ml-6 items-center justify-center sm:justify-between">
-                    <span id="welcoming" class=""><span>Welcome, <span
-                                class="font-semibold">{{ Session::get('username') }}</span></span></span>
-
-                    <span class="flex items-center sm:justify-end text-white font-semibold mr-6 underline" id="logout">
-                        <a class="" href="{{ route('logout') }}" class="text-white"> logout </a>
-                    </span>
-
-                </span>
-            </p>
-        @else
-            <a href="{{ route('register') }}">
-                <p class="w-full mx-auto text-center py-2 bg-gray-900 text-white">Log in here to get the latest
-                    product</p>
-            </a>
-        @endif
-    </div>
-    <div>
-        <h1 class="text-center p-3 text-5xl font-semibold">Vasco</h1>
-    </div>
-    <hr class="mb-20">
-
+    
     {{-- -------------------- SIDE BAR ------------------- --}}
     <div class="flex grid grid-cols-3 gap-4">
         <section class="ml-10">
@@ -56,6 +19,7 @@
             </a>
 
             <section class="w-1/2 row-span-2 bg-cover bg-no-repeat bg-right justify-end items-start">
+
                 <div class="items-center space-x-4">
                     {{-- Searching --}}
                     <form method="get" action="">
@@ -94,11 +58,9 @@
                     {{-- <button type="submit" value="{{ $category->id }}" name="searchCategorySubmit"
                     class="">{{ $category->category_name }}</button> --}}
 
-                </div>
-                <form class="" action="{{ route('catalog.show') }}" method="get">
-                    <div class="flex w-full mt-6">
-                        <select class="border rounded form-control" id="categoriesOption" name="categoriesOption">
-                            <option value="" disabled selected>Categories</option>
+                    <form class="form-horizontal" action="{{ route('catalog.show') }}" method="get">
+                        <select class="form-control" id="categoriesOption" name="categoriesOption">
+                            <option value="" disabled selected>Select Category</option>
                             @foreach ($categoryList as $category)
                                 <option value="{{ $category->id }}">
                                     {{ $category->category_name }}
@@ -108,11 +70,14 @@
                             @endforeach
                         </select>
                         <button type="submit" value="searchCategory" name="searchCategorySubmit"
-                        class="w-1/3 bg-gray-200 text-black px-2 py-2 rounded hover:bg-gray-300">
-                        Search
-                    </button>
+                            class="btn btn-primary">View
+                            Category</button>
+                    </form>
+
+
+
                 </div>
-                </form>
+
             </section>
         </section>
 
@@ -155,18 +120,5 @@
     </section>
 </div>
 {{-- -------------------- END OF SIDE BAR ------------------- --}}
-
-{{--     <div class="grid grid-cols-2"> --}}
-
-
-
-{{-- </div> --}}
-
 </body>
-
-<script></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-</script>
-
-
 </html>

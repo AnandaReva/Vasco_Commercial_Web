@@ -28,10 +28,6 @@ class Product extends Model
    /*      return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id'); */
     }
 
-    public function productOrderDetails()
-    {
-        return $this->belongsToMany(Order_details::class, 'order_details', 'product_id', 'id');
-    }
     public function variants()
     {
         return $this->hasMany(ProductVariant::class, 'product_id', 'id');
