@@ -1,4 +1,5 @@
 # TubesPemweb
+<<<<<<< HEAD
 
 Kelompok 2 Tubes Pemweb (E-Commerce)
 
@@ -135,3 +136,6 @@ RAJAONGKIR_CACHE=database
 
 
 Import Databse muvita.sql
+=======
+Kelompok 2 Tubes Pemweb (E-Commerce)
+>>>>>>> 164bc1d2de78077f49d3c44f568659d16417fe80
