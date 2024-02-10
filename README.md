@@ -60,13 +60,13 @@ MAIL_HOST=smtp.gmail.com
 
 MAIL_PORT=587
 
-MAIL_USERNAME=namadepannamabelakang1781945@gmail.com
+MAIL_USERNAME=[email]
 
-MAIL_PASSWORD="qtxb iwdn kgpq qftn"
+MAIL_PASSWORD=["app password for gmail"]
 
 MAIL_ENCRYPTION=tls
 
-MAIL_FROM_ADDRESS=namadepannamabelakang1781945@gmail.com
+MAIL_FROM_ADDRESS=[email]
 
 MAIL_FROM_NAME="${APP_NAME}"
 
